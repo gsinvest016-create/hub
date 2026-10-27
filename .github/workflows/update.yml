@@ -1,0 +1,67 @@
+name: 更新資料並部署總站
+
+on:
+  schedule:
+    - cron: '30 7 * * 1-5'
+    - cron: '30 22 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: update-site
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安裝套件
+        run: |
+          pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install yfinance pandas requests lxml; fi
+
+      - name: 抓價量（update_data.py）
+        run: python update_data.py
+
+      - uses: actions/setup-node@v4
+        if: hashFiles('build.js') != ''
+        with:
+          node-version: '20'
+
+      - name: 重建站台資料（build.js，若存在）
+        if: hashFiles('build.js') != ''
+        run: |
+          if [ -f package.json ]; then npm ci || npm install; fi
+          node build.js
+
+      - name: 提交更新後的資料
+        run: |
+          git config user.name  'hub-bot'
+          git config user.email 'hub-bot@users.noreply.github.com'
+          git add -A data modules index.html || true
+          if git diff --cached --quiet; then echo "no changes"; else git commit -m "data: $(date -u +'%Y-%m-%d %H:%M UTC')" && git push; fi
+
+      - name: 打包 Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
