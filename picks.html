@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>每日選股：精選訊號掃描</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f1ec;--card:#fbfaf7;--ink:#14213d;--mute:#5f6779;--line:#dcd8cf;--soft:#fff3cf;--up:#d12c2c;--dn:#1a8f5a;--gold:#b8860b;--nq:#7c3aed;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1220;--card:#161c2e;--ink:#eceef5;--mute:#9aa3b8;--line:#2b3348;--soft:#3a2f10;--up:#ff6b6b;--dn:#4ccf8a;--gold:#e8c35a;--nq:#b793ff}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0e1220;--card:#161c2e;--ink:#eceef5;--mute:#9aa3b8;--line:#2b3348;--soft:#3a2f10;--up:#ff6b6b;--dn:#4ccf8a;--gold:#e8c35a;--nq:#b793ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",-apple-system,"PingFang TC","Microsoft JhengHei",Helvetica,Arial,sans-serif;line-height:1.6;font-size:14px}
+.wrap{max-width:1100px;margin:0 auto;padding:16px 14px 48px}h1{font-size:clamp(22px,4.5vw,30px);font-weight:900;margin:0 0 4px}.sub{color:var(--mute);font-size:13px;margin:0 0 14px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}.bar button,.bar label{font:inherit;font-size:13px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);cursor:pointer}.bar button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mk{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin:10px 0}.mk div{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:13px}.mk b{font-size:16px}
+.ok{color:var(--up);font-weight:700}.bad{color:var(--dn);font-weight:700}
+.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;white-space:nowrap}th{background:var(--card);position:sticky;top:0}td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.chip{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;border:1px solid var(--line);margin:1px 2px 1px 0;background:var(--card)}.chip.main{border-color:var(--up);color:var(--up);font-weight:700}
+.sc{font-weight:900}a{color:inherit}.note{font-size:12px;color:var(--mute)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:13px;box-shadow:0 4px 16px rgba(0,0,0,.25);opacity:0;transition:opacity .3s;pointer-events:none}.toast.show{opacity:1}
+.idx{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.idx div{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:13px}
+</style>
+</head>
+<body><div class="wrap">
+<h1>每日選股：精選訊號掃描</h1>
+<p class="sub" id="meta">載入中…</p>
+<div class="mk" id="mk"></div>
+<div class="idx" id="idx"></div>
+<div class="bar">
+  <button data-m="TW" class="on">台股</button><button data-m="US">美股</button>
+  <button id="mainOnly" class="on">只看含主力訊號</button>
+  <button id="near10">距 52 週高 &lt;10%</button>
+  <button id="copy">複製代號</button>
+  <a href="index.html" style="margin-left:auto;font-size:13px">← 回總站</a>
+</div>
+<p class="note">評分＝各訊號在勝率庫的平均 R 相加，＋近 52 週高加分、＋MA200 之上加分。主力訊號＝52 週新高、VCP、跳空帶量、杯柄、KD 高檔鈍化、55 日新高、旗形。停損＝收盤 − 2 ATR，出場＝收盤跌破 10 日最低。掃描的是當日收盤，作為隔日買進參考；大盤低於 MA50 時部位減半。</p>
+<div class="scroll"><table id="t"><thead><tr><th>#</th><th>代號</th><th>名稱</th><th class="n">收盤</th><th class="n">漲幅</th><th class="n">量比</th><th>訊號</th><th class="n">距 52 週高</th><th class="n">停損(2ATR)</th><th class="n">評分</th></tr></thead><tbody></tbody></table></div>
+<p class="note" id="more"></p>
+<div class="toast" id="toast"></div>
+</div>
+<script>
+const S={m:'TW',main:true,near:false,data:null};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function fmtd(d){return d?d.slice(4,6).replace(/^0/,'')+'/'+d.slice(6).replace(/^0/,''):'—';}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),3500);}
+function render(){
+  const D=S.data; if(!D) return; const zh=D.zh; const MAIN=['hi52','vcp','gap_up','cup','kd_high','donch55','flag'];
+  let list=D.picks.filter(p=>p.m===S.m); if(S.main) list=list.filter(p=>p.main); if(S.near) list=list.filter(p=>p.near52<10);
+  const tb=document.querySelector('#t tbody'); tb.innerHTML=list.slice(0,80).map((p,i)=>`<tr><td class="n">${i+1}</td><td><a href="index.html#/stock/${encodeURIComponent(p.c)}">${esc(p.c)}</a></td><td>${esc(p.n)}</td><td class="n">${p.close}</td><td class="n ${p.chg>=0?'ok':'bad'}">${p.chg>=0?'+':''}${p.chg}%</td><td class="n">${p.volr}x</td><td>${p.signals.map(s=>`<span class="chip ${MAIN.includes(s)?'main':''}">${esc(zh[s]||s)}</span>`).join('')}</td><td class="n">${p.near52<0?'<span class="ok">創高 +'+(-p.near52)+'%</span>':p.near52+'%'}</td><td class="n">${p.stop??'—'}</td><td class="n sc">${p.score.toFixed(2)}</td></tr>`).join('');
+  document.getElementById('more').textContent=list.length>80?`共 ${list.length} 檔，只顯示前 80`:`共 ${list.length} 檔`;
+  S.list=list;
+}
+fetch('data/picks.json',{cache:'no-store'}).then(r=>r.json()).then(D=>{
+  S.data=D; document.getElementById('meta').textContent=`台股資料日 ${fmtd(D.date_tw)}、美股 ${fmtd(D.date_us)}；掃描 ${D.picks.length} 檔符合（台股 ${D.picks.filter(p=>p.m==='TW').length}、美股 ${D.picks.filter(p=>p.m==='US').length}）。產生時間 ${D.generated.replace('T',' ').replace('Z',' UTC')}`;
+  document.getElementById('mk').innerHTML=`<div>加權指數：<b class="${D.market.TW?'ok':'bad'}">${D.market.TW?'MA50 之上，正常部位':'低於 MA50，部位減半'}</b></div><div>標普 500：<b class="${D.market.US?'ok':'bad'}">${D.market.US?'MA50 之上，正常部位':'低於 MA50，部位減半'}</b></div>`;
+  document.getElementById('idx').innerHTML=D.indices.map(x=>`<div><b>${esc(x.name)}</b> ${x.close}　${x.signals.length?x.signals.map(s=>`<span class="chip main">${esc(D.zh[s]||s)}</span>`).join(''):'<span class="note">無指數訊號</span>'}</div>`).join('');
+  render();
+  try{const key='picks.seen', last=localStorage.getItem(key), cur=D.date_tw+'|'+D.date_us; if(last!==cur){localStorage.setItem(key,cur); const n=D.picks.filter(p=>p.main).length; toast(`新的一天：${n} 檔含主力訊號`); if('Notification' in window&&Notification.permission==='granted') new Notification('每日選股更新',{body:`${fmtd(D.date_tw)} 台股／${fmtd(D.date_us)} 美股：${n} 檔含主力訊號`});}}catch(e){}
+}).catch(e=>{document.getElementById('meta').textContent='讀不到 data/picks.json：請確認 Actions 已跑過 scan_signals.py。';});
+document.querySelectorAll('.bar button[data-m]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.bar button[data-m]').forEach(x=>x.classList.remove('on'));b.classList.add('on');S.m=b.dataset.m;render();}));
+document.getElementById('mainOnly').addEventListener('click',e=>{S.main=!S.main;e.target.classList.toggle('on',S.main);render();});
+document.getElementById('near10').addEventListener('click',e=>{S.near=!S.near;e.target.classList.toggle('on',S.near);render();});
+document.getElementById('copy').addEventListener('click',()=>{const t=(S.list||[]).slice(0,80).map(p=>p.c).join(' ');navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>toast('已複製 '+Math.min(80,(S.list||[]).length)+' 個代號'));if('Notification' in window&&Notification.permission==='default')Notification.requestPermission();});
+</script>
+</body></html>
