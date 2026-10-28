@@ -33,8 +33,8 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;background:va
   <button id="copy">複製代號</button>
   <a href="index.html" style="margin-left:auto;font-size:13px">← 回總站</a>
 </div>
-<p class="note">評分＝各訊號在勝率庫的平均 R 相加，＋近 52 週高加分、＋MA200 之上加分。主力訊號＝52 週新高、VCP、跳空帶量、杯柄、KD 高檔鈍化、55 日新高、旗形。停損＝收盤 − 2 ATR，出場＝收盤跌破 10 日最低。掃描的是當日收盤，作為隔日買進參考；大盤低於 MA50 時部位減半。</p>
-<div class="scroll"><table id="t"><thead><tr><th>#</th><th>代號</th><th>名稱</th><th class="n">收盤</th><th class="n">漲幅</th><th class="n">量比</th><th>訊號</th><th class="n">距 52 週高</th><th class="n">停損(2ATR)</th><th class="n">評分</th></tr></thead><tbody></tbody></table></div>
+<p class="note">評分＝各訊號在勝率庫的平均 R 相加，＋近 52 週高加分、＋MA200 之上加分。主力訊號＝52 週新高、VCP、跳空帶量、杯柄、KD 高檔鈍化、55 日新高、旗形。停損＝收盤 − 2 ATR，出場＝收盤跌破 10 日最低。已排除量小股（台股 20 日均量 <1,000 張或日均成交額 <5,000 萬；美股日均成交額 <2,000 萬美元），也排除股本小（台股實收資本額 <10 億、美股市值 <10 億美元）。掃描的是當日收盤，作為隔日買進參考；大盤低於 MA50 時部位減半。</p>
+<div class="scroll"><table id="t"><thead><tr><th>#</th><th>代號</th><th>名稱</th><th class="n">收盤</th><th class="n">漲幅</th><th class="n">量比</th><th class="n">20 日均量</th><th class="n">股本／市值</th><th>訊號</th><th class="n">距 52 週高</th><th class="n">停損(2ATR)</th><th class="n">評分</th></tr></thead><tbody></tbody></table></div>
 <p class="note" id="more"></p>
 <div class="toast" id="toast"></div>
 </div>
@@ -46,7 +46,7 @@ function toast(t){const e=document.getElementById('toast');e.textContent=t;e.cla
 function render(){
   const D=S.data; if(!D) return; const zh=D.zh; const MAIN=['hi52','vcp','gap_up','cup','kd_high','donch55','flag'];
   let list=D.picks.filter(p=>p.m===S.m); if(S.main) list=list.filter(p=>p.main); if(S.near) list=list.filter(p=>p.near52<10);
-  const tb=document.querySelector('#t tbody'); tb.innerHTML=list.slice(0,80).map((p,i)=>`<tr><td class="n">${i+1}</td><td><a href="index.html#/stock/${encodeURIComponent(p.c)}">${esc(p.c)}</a></td><td>${esc(p.n)}</td><td class="n">${p.close}</td><td class="n ${p.chg>=0?'ok':'bad'}">${p.chg>=0?'+':''}${p.chg}%</td><td class="n">${p.volr}x</td><td>${p.signals.map(s=>`<span class="chip ${MAIN.includes(s)?'main':''}">${esc(zh[s]||s)}</span>`).join('')}</td><td class="n">${p.near52<0?'<span class="ok">創高 +'+(-p.near52)+'%</span>':p.near52+'%'}</td><td class="n">${p.stop??'—'}</td><td class="n sc">${p.score.toFixed(2)}</td></tr>`).join('');
+  const tb=document.querySelector('#t tbody'); tb.innerHTML=list.slice(0,80).map((p,i)=>`<tr><td class="n">${i+1}</td><td><a href="index.html#/stock/${encodeURIComponent(p.c)}">${esc(p.c)}</a></td><td>${esc(p.n)}</td><td class="n">${p.close}</td><td class="n ${p.chg>=0?'ok':'bad'}">${p.chg>=0?'+':''}${p.chg}%</td><td class="n">${p.volr}x</td><td class="n">${p.m==='TW'?Math.round(p.avgvol/1000).toLocaleString()+' 張':(p.avgvol/1e6).toFixed(1)+'M'}</td><td class="n">${p.m==='TW'?(p.capital!=null?p.capital+' 億':'—'):(p.mcap!=null?'$'+p.mcap+'B':'—')}</td><td>${p.signals.map(s=>`<span class="chip ${MAIN.includes(s)?'main':''}">${esc(zh[s]||s)}</span>`).join('')}</td><td class="n">${p.near52<0?'<span class="ok">創高 +'+(-p.near52)+'%</span>':p.near52+'%'}</td><td class="n">${p.stop??'—'}</td><td class="n sc">${p.score.toFixed(2)}</td></tr>`).join('');
   document.getElementById('more').textContent=list.length>80?`共 ${list.length} 檔，只顯示前 80`:`共 ${list.length} 檔`;
   S.list=list;
 }

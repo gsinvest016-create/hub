@@ -17,6 +17,74 @@ DATA = os.path.join(ROOT, "data")
 # 勝率庫（台股十年）平均 R，當作評分權重
 W_STOCK = {"hi52": .594, "vcp": .512, "gap_up": .449, "cup": .414, "kd_high": .414, "donch55": .380, "flag": .378,
            "box": .336, "donch20": .318, "asc_tri": .306, "macd_gc_above": .306, "bb_upper": .305, "adx": .292, "vol_break": .276}
+# 流動性門檻（可用環境變數調整）：台股 20 日均量 ≥ MIN_TW_LOTS 張 且 均成交金額 ≥ MIN_TW_TURNOVER 元；美股 均成交金額 ≥ MIN_US_TURNOVER 美元
+MIN_TW_LOTS = int(os.environ.get("MIN_TW_LOTS", "1000"))
+MIN_TW_TURNOVER = float(os.environ.get("MIN_TW_TURNOVER", "50000000"))
+MIN_US_TURNOVER = float(os.environ.get("MIN_US_TURNOVER", "20000000"))
+MIN_TW_CAPITAL = float(os.environ.get("MIN_TW_CAPITAL", "10"))      # 台股實收資本額門檻（億元），低於剔除
+MIN_US_MCAP_B = float(os.environ.get("MIN_US_MCAP_B", "1"))         # 美股市值門檻（十億美元），低於剔除
+
+
+def fetch_json(url, timeout=30):
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read().decode("utf-8-sig"))
+
+
+def load_tw_capital():
+    """台股實收資本額（億元）：TWSE / TPEx 開放資料，快取 30 天在 data/capital_tw.json"""
+    path = os.path.join(DATA, "capital_tw.json")
+    try:
+        c = json.load(open(path, encoding="utf-8"))
+        if (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(c["at"])).days < 30 and len(c["cap"]) > 500:
+            return c["cap"]
+    except Exception:
+        pass
+    cap = {}
+    for url in ["https://openapi.twse.com.tw/v1/opendata/t187ap03_L",
+                "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O",
+                "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O.json"]:
+        try:
+            rows = fetch_json(url)
+        except Exception as e:
+            print("股本來源失敗", url, e); continue
+        for row in rows:
+            code = next((str(v).strip() for k, v in row.items() if ("代號" in k or "Code" in k) and str(v).strip().isdigit()), None)
+            val = next((v for k, v in row.items() if "資本額" in k or "Capital" in k), None)
+            if not code or val is None: continue
+            try:
+                n = float(str(val).replace(",", ""))
+            except ValueError:
+                continue
+            if n > 0: cap[code] = round(n / 1e8, 2)
+    if cap:
+        json.dump({"at": dt.datetime.now(dt.timezone.utc).isoformat(), "cap": cap}, open(path, "w", encoding="utf-8"))
+    return cap
+
+
+def load_us_mcap(symbols):
+    """美股市值（十億美元）：只查有訊號的候選股，yfinance fast_info，快取 30 天在 data/mcap_us.json"""
+    path = os.path.join(DATA, "mcap_us.json")
+    try:
+        c = json.load(open(path, encoding="utf-8"))
+    except Exception:
+        c = {}
+    now = dt.datetime.now(dt.timezone.utc)
+    need = [s for s in symbols if s not in c or (now - dt.datetime.fromisoformat(c[s]["at"])).days >= 30]
+    if need:
+        try:
+            import yfinance as yf
+            for sym in need[:300]:
+                try:
+                    mc = yf.Ticker(sym.replace(".", "-")).fast_info.get("marketCap")
+                    c[sym] = {"at": now.isoformat(), "b": round(mc / 1e9, 2) if mc else None}
+                except Exception:
+                    c[sym] = {"at": now.isoformat(), "b": None}
+        except Exception as e:
+            print("市值查詢失敗", e)
+        json.dump(c, open(path, "w", encoding="utf-8"))
+    return {k: v.get("b") for k, v in c.items()}
+
 ZH = {"hi52": "52 週新高", "vcp": "VCP 突破", "gap_up": "跳空帶量長紅", "cup": "杯柄突破", "kd_high": "KD 高檔鈍化", "donch55": "55 日新高",
       "flag": "旗形突破", "box": "箱型突破", "donch20": "20 日新高", "asc_tri": "上升三角突破", "macd_gc_above": "MACD 零軸上金叉",
       "bb_upper": "站上布林上軌", "adx": "ADX 趨勢啟動", "vol_break": "爆量長紅突破",
@@ -131,6 +199,8 @@ def stock_signals(o, h, l, c, v):
     near52 = (hi252 - c[i]) / hi252 * 100 if hi252 > 0 else 99
     above200 = (not np.isnan(ma200[i])) and c[i] > ma200[i]
     volr = v[i] / vol20[i] if vol20[i] and vol20[i] > 0 else 0
+    avgvol = float(vol20[i]) if vol20[i] == vol20[i] else 0.0          # 20 日均量（股）
+    turnover = float(np.mean(v[i - 19:i + 1] * c[i - 19:i + 1]))         # 20 日均成交金額
     chg = c[i] / c[i - 1] - 1
     # 52 週新高（20 日來首次）
     if n > 252 and c[i] > hi252 and not any(c[j] > c[max(0, j - 252):j].max() for j in range(i - 20, i) if j > 252):
@@ -204,7 +274,8 @@ def stock_signals(o, h, l, c, v):
             sig["vcp"] = True
     meta = dict(near52=round(near52, 1), above200=bool(above200), volr=round(volr, 2), chg=round(chg * 100, 2),
                 atr=round(float(a14[i]), 3) if not np.isnan(a14[i]) else None, close=round(float(c[i]), 2),
-                hi52=round(float(hi252), 2), ma200=round(float(ma200[i]), 2) if not np.isnan(ma200[i]) else None)
+                hi52=round(float(hi252), 2), ma200=round(float(ma200[i]), 2) if not np.isnan(ma200[i]) else None,
+                avgvol=round(avgvol), turnover=round(turnover))
     return sig, meta
 
 
@@ -250,6 +321,7 @@ def arr(bars):
 
 def main():
     index = load_z(os.path.join(DATA, "index.json"))
+    cap_tw = load_tw_capital(); print(f"台股股本資料 {len(cap_tw)} 檔")
     picks = []; date_tw = ""; date_us = ""
     by_chunk = {}
     for s in index["stocks"]: by_chunk.setdefault(s["k"], []).append(s)
@@ -272,9 +344,25 @@ def main():
             if s["m"] == "TW" and (not s["c"].isdigit() or s["c"].startswith("00")): continue   # 排除 ETF、特別股
             if meta.get("close", 0) < (10 if s["m"] == "TW" else 5): continue   # 太低價不要
             if not meta["above200"] or meta["near52"] >= 20: continue           # 選股濾網：MA200 之上、距 52 週高 <20%
+            if s["m"] == "TW" and (meta["avgvol"] < MIN_TW_LOTS * 1000 or meta["turnover"] < MIN_TW_TURNOVER): continue   # 量太小
+            if s["m"] == "US" and meta["turnover"] < MIN_US_TURNOVER: continue
+            if s["m"] == "TW":
+                cp = cap_tw.get(s["c"])
+                if cp is not None and cp < MIN_TW_CAPITAL: continue                 # 股本太小
+                meta["capital"] = cp
             score = sum(W_STOCK[x] for x in sig) + (0.3 if meta["near52"] < 10 else (0.1 if meta["near52"] < 20 else -0.15)) + (0.1 if meta["above200"] else -0.3)
             stop = round(meta["close"] - 2 * meta["atr"], 2) if meta.get("atr") else None
             picks.append(dict(c=s["c"], n=s["n"], m=s["m"], date=d, signals=list(sig), main=any(x in MAIN for x in sig), score=round(score, 3), stop=stop, **meta))
+    # 美股市值（只查候選）
+    us_syms = [p["c"] for p in picks if p["m"] == "US"]
+    mcap = load_us_mcap(us_syms) if us_syms else {}
+    kept = []
+    for p in picks:
+        if p["m"] == "US":
+            b = mcap.get(p["c"]); p["mcap"] = b
+            if b is not None and b < MIN_US_MCAP_B: continue
+        kept.append(p)
+    picks = kept
     picks.sort(key=lambda p: -p["score"])
     # 指數
     ind = load_z(os.path.join(DATA, "indices.json")); idx_out = []
@@ -297,7 +385,7 @@ def main():
     # Telegram 推播
     tok, chat = os.environ.get("TELEGRAM_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
     if tok and chat:
-        def fmt(p): return f"{p['c']} {p['n']}  {'、'.join(ZH[x] for x in p['signals'])}  收 {p['close']} 停損 {p['stop']} 距高 {p['near52']}%"
+        def fmt(p): return f"{p['c']} {p['n']}  {'、'.join(ZH[x] for x in p['signals'])}  收 {p['close']} 停損 {p['stop']} 距高 {p['near52']}% 均量 {round(p['avgvol']/1000) if p['m']=='TW' else round(p['avgvol']/1e6,1)}{'張' if p['m']=='TW' else 'M'}{(' 股本 '+str(p['capital'])+'億') if p.get('capital') else ''}{(' 市值 '+str(p['mcap'])+'B') if p.get('mcap') else ''}"
         lines = [f"📡 每日選股 {date_tw}（台股）/ {date_us}（美股）", f"大盤：加權{'在' if out['market']['TW'] else '低於'} MA50、標普{'在' if out['market']['US'] else '低於'} MA50", ""]
         lines.append(f"【台股 前 15／共 {len(tw)}】"); lines += [fmt(p) for p in tw[:15]]
         lines.append(""); lines.append(f"【美股 前 10／共 {len(us)}】"); lines += [fmt(p) for p in us[:10]]
