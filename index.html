@@ -1,4 +1,26 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+/* 技術訊號圖解 */
+.sggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:12px}
+.sgcard{display:flex;flex-direction:column;gap:4px;border:1px solid var(--line);border-radius:12px;padding:8px 10px 10px;background:var(--panel);color:inherit;text-decoration:none;transition:border-color .15s,transform .15s;min-width:0}
+.sgcard:hover,.sgcard:focus-visible{border-color:var(--accent);transform:translateY(-1px);outline:none}
+.sgcard.off{opacity:.7}
+.sgthumb{aspect-ratio:720/228;background:var(--panel2);border-radius:8px;overflow:hidden}
+.sgthumb svg{width:100%;height:100%;display:block}
+.sgname{font-weight:600;font-size:13.5px;line-height:1.35;margin-top:4px}
+.sgmeta{font-size:11.5px;color:var(--ink3);display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.sgstat{font-size:12px;color:var(--ink2);line-height:1.5}
+.sgbig{overflow-x:auto}
+.sgbig svg{width:100%;max-width:1000px;min-width:600px;height:auto;display:block;margin:0 auto}
+.sglegend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink2);margin-top:8px}
+.sglegend i{display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.sgdl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;margin:0;font-size:13.5px;line-height:1.65}
+.sgdl dt{color:var(--ink3);font-weight:600;white-space:nowrap}
+.sgdl dd{margin:0}
+.pill.muted2{background:var(--chip);color:var(--ink3)}
+#egTbl td a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+#egTbl td a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+@media (max-width:560px){.sgdl{grid-template-columns:minmax(0,1fr)}.sgdl dt{margin-top:6px}.sggrid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}}
+</style></head><body>
 <title>投研總台</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
@@ -456,6 +478,7 @@ tr.rs-hi td{background:var(--panel2)}
     <a href="#/ideas" data-route="ideas"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3zM10 21h4"/></svg>交易點子</a>
     <a href="#/recs" data-route="recs"><svg viewBox="0 0 24 24"><path d="M4 19h16M7 16V9M12 16V5M17 16v-4"/><path d="M5 6l4 3 4-5 5 3"/></svg>建議績效</a>
     <a href="#/edge" data-route="edge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg>勝率庫</a>
+    <a href="#/signals" data-route="signals" title="技術訊號圖解：每個訊號的示意圖、進出場與回測數字"><svg viewBox="0 0 24 24"><path d="M6 3v4M6 17v4M12 2v3M12 19v3M18 5v3M18 16v4"/><rect x="4" y="7" width="4" height="10" rx="1"/><rect x="10" y="5" width="4" height="14" rx="1"/><rect x="16" y="8" width="4" height="8" rx="1"/></svg>訊號圖解</a>
     <a href="#/research" data-route="research"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 16V9M10 16V5M14 16v-5M18 16V7"/></svg>研究數據</a>
     <a href="#/supply" data-route="supply"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="5"/><rect x="15" y="4" width="6" height="5"/><rect x="9" y="15" width="6" height="5"/><path d="M6 9v3h12V9M12 12v3"/></svg>供應鏈地圖</a>
     <a href="#/season" data-route="season"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>週季節性</a>
@@ -509,6 +532,7 @@ tr.rs-hi td{background:var(--panel2)}
   <section id="view-backtest" hidden><div id="backtestBody" class="loading">載入中…</div></section>
   <section id="view-edge" hidden><div id="edgeBody" class="loading">載入中…</div></section>
   <section id="view-research" hidden><div id="researchBody" class="loading">載入中…</div></section>
+  <section id="view-signals" hidden><div id="signalsBody" class="loading">載入中…</div></section>
   <section id="view-supply" hidden><div class="modbar">台股供應鏈地圖（上市、上櫃、興櫃全名錄；523 檔含上下游關係）· <a href="https://claude.ai/artifact/6uBSCECiTdgpDTzG8QujzC" target="_blank" rel="noopener">原始頁面</a></div><div id="mod-supply" class="modhost loading">載入供應鏈地圖…</div></section>
   <section id="view-season" hidden><div class="modbar">三大指數週季節性（S&amp;P 500 / 那斯達克 / 台股加權，逐週歷史平均漲跌與上漲機率）· <a href="https://claude.ai/artifact/AreWZ1CXrUYTPgyed1mSPk" target="_blank" rel="noopener">原始頁面</a></div><div id="mod-season" class="modhost loading">載入季節性統計…</div></section>
   <section id="view-midterm" hidden><div class="modbar">2026 期中選舉年季節性地圖（美股黃金 8 日、選後路徑、台指期選前／選後、月內季節性、歷年勝率表）· <a href="https://claude.ai/artifact/NdDfGQevXegm2ZtytR8LKL" target="_blank" rel="noopener">原始頁面</a></div><div id="mod-midterm" class="modhost loading">載入期中選舉年統計…</div></section>
@@ -2259,7 +2283,7 @@ window.__INLINE_MODS = { midterm: {"z": "H4sIAJUk4GoC/+V9a3MTV7boX+lDLpEUS+1+6Wl
 /* GitHub 倉庫（owner/repo）：填入後 header 會出現「立即更新」按鈕，開啟 Actions 手動觸發頁 */
 window.__REPO = window.__REPO || 'gsinvest016-create/hub';
 (function(){ var b = document.getElementById('btnUpdate'); if (b && window.__REPO) { b.href = 'https://github.com/' + window.__REPO + '/actions/workflows/update.yml'; b.hidden = false; } })();
-var ROUTES = ['market', 'home', 'flow', 'recs', 'reports', 'daily', 'stock', 'radar', 'ideas', 'edge', 'research', 'supply', 'season', 'midterm', 'settle', 'notes'];
+var ROUTES = ['market', 'home', 'flow', 'recs', 'reports', 'daily', 'stock', 'radar', 'ideas', 'edge', 'signals', 'research', 'supply', 'season', 'midterm', 'settle', 'notes'];
 function parseHash() {
   var hsh = (location.hash || '').replace(/^#\/?/, ''), parts = hsh.split('/').filter(Boolean);
   var route = parts[0] || 'market', arg = parts[1] || '';
@@ -2289,6 +2313,7 @@ function showRoute() {
   else if (r.route === 'backtest') renderBacktest();
   else if (r.route === 'edge') renderEdge();
   else if (r.route === 'research') renderResearch();
+  else if (r.route === 'signals') renderSignals(r.arg);
   else if (r.route === 'notes') renderNotes();
   else if (r.route === 'season') mountModule('season');
   else if (r.route === 'midterm') mountModule('midterm');
@@ -2800,11 +2825,17 @@ var US_NAMES = { NVDA: ['輝達'], AAPL: ['蘋果'], AMD: ['超微'], INTC: ['�
 // ---------- 季節性 ----------
 function doy(d) { return Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(d.getFullYear(), 0, 1)) / 86400000) + 1; }
 function weekRange(w, y) { var a = new Date(y, 0, 1 + (w - 1) * 7), b = w === 52 ? new Date(y, 11, 31) : new Date(y, 0, w * 7); return [a, b]; }
+// ISO 週：週一起算（第 1 週＝含當年第一個週四的那週），日期顯示週一～週五；週六、週日時「本週」指下一個交易週
+function isoMon1(y) { var j4 = Date.UTC(y, 0, 4); return j4 - ((new Date(j4).getUTCDay() + 6) % 7) * 864e5; }
+function isoWeeksIn(y) { return Math.round((isoMon1(y + 1) - isoMon1(y)) / 6048e5); }
+function isoWeekOf(d) { var g = d.getDay(), t = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate() + (g === 6 ? 2 : g === 0 ? 1 : 0)), day = (new Date(t).getUTCDay() + 6) % 7, y = new Date(t + (3 - day) * 864e5).getUTCFullYear(); return { y: y, w: Math.round((t - day * 864e5 - isoMon1(y)) / 6048e5) + 1 }; }
+function isoWeekRange(w, y) { var m = isoMon1(y) + (w - 1) * 6048e5, a = new Date(m), b = new Date(m + 4 * 864e5); return [new Date(a.getUTCFullYear(), a.getUTCMonth(), a.getUTCDate()), new Date(b.getUTCFullYear(), b.getUTCMonth(), b.getUTCDate())]; }
 function seasonCalc(idx, win) {
   var D = state.season; if (!D || !D.weekly[idx]) return null;
-  var today = new Date(), y = today.getFullYear(), w = Math.min(52, Math.floor((doy(today) - 1) / 7) + 1);
+  var today = new Date(), iso = !!(D.meta && D.meta[idx] && D.meta[idx].weeks === 'iso'), y, w, NW;
+  if (iso) { var iw = isoWeekOf(today); y = iw.y; w = iw.w; NW = isoWeeksIn(y); } else { y = today.getFullYear(); w = Math.min(52, Math.floor((doy(today) - 1) / 7) + 1); NW = 52; }
   var rows = D.weekly[idx][win] || D.weekly[idx]['all'], out = [];
-  for (var k = 0; k < 5; k++) { var ww = ((w - 1 + k) % 52) + 1, r = rows[ww - 1], rg = weekRange(ww, ww < w ? y + 1 : y); out.push({ w: ww, from: rg[0], to: rg[1], mean: r ? r[0] : null, med: r ? r[1] : null, win: r ? r[2] : null, n: r ? r[3] : 0, now: k === 0 }); }
+  for (var k = 0; k < 5; k++) { var ww = w + k, yy = y; if (ww > NW) { ww -= NW; yy = y + 1; } var r = rows[ww - 1], rg = iso ? isoWeekRange(ww, yy) : weekRange(ww, yy); out.push({ w: ww, from: rg[0], to: rg[1], mean: r ? r[0] : null, med: r ? r[1] : null, win: r ? r[2] : null, n: r ? r[3] : 0, now: k === 0 }); }
   var mo = today.getMonth(), mrow = (D.monthly[idx][win] || D.monthly[idx]['all'])[mo];
   var next2 = out.slice(0, 2).filter(function (r) { return r.mean != null; });
   var avgMean = next2.length ? next2.reduce(function (s, r) { return s + r.mean; }, 0) / next2.length : 0, avgWin = next2.length ? next2.reduce(function (s, r) { return s + r.win; }, 0) / next2.length : 50;
@@ -4120,11 +4151,11 @@ function egTableCard(D, mk) {
   var head = '<tr><th>訊號</th><th>類別</th><th>家族</th>' + th('n', '次數') + th('win', '勝率') + th('R', '期望值') + th('pf', 'PF') + '<th class="num">每筆報酬</th>' + th('edge', '比隨機') + th('ex', '10 日超額（t）') + (isIdx ? th('tw', '加權 R（次數）') : th('a200', 'MA200 上') + th('near52', '近 52 週高')) + '</tr>';
   var body = rows.map(function (r) {
     var x = r.x, s = r.s, l10 = x.l10, tw = D.st[s.k].TWII;
-    return '<tr><td>' + (s.side === -1 ? '<span class="pill short">空</span> ' : '') + esc(s.zh) + '</td><td>' + esc(s.cat) + '</td><td class="muted">' + (s.fam === 'trend' ? '趨勢' : '回歸') + '</td><td class="num">' + x.n.toLocaleString() + '</td><td class="num">' + egW(x.win) + '</td><td class="num ' + egCls(x.R, 0.2) + '">' + egR(x.R) + '</td><td class="num">' + x.pf.toFixed(2) + '</td><td class="num">' + egP(x.pnl) + '</td><td class="num ' + egCls(x.edge, 0.1) + '">' + egR(x.edge) + '</td><td class="num ' + egCls(l10 && l10.ex) + '">' + (l10 ? egP(l10.ex, 2) + '（' + l10.t.toFixed(1) + '）' : '—') + '</td>' +
+    return '<tr><td>' + (s.side === -1 ? '<span class="pill short">空</span> ' : '') + '<a href="#/signals/' + esc(s.k) + '">' + esc(s.zh) + '</a></td><td>' + esc(s.cat) + '</td><td class="muted">' + (s.fam === 'trend' ? '趨勢' : '回歸') + '</td><td class="num">' + x.n.toLocaleString() + '</td><td class="num">' + egW(x.win) + '</td><td class="num ' + egCls(x.R, 0.2) + '">' + egR(x.R) + '</td><td class="num">' + x.pf.toFixed(2) + '</td><td class="num">' + egP(x.pnl) + '</td><td class="num ' + egCls(x.edge, 0.1) + '">' + egR(x.edge) + '</td><td class="num ' + egCls(l10 && l10.ex) + '">' + (l10 ? egP(l10.ex, 2) + '（' + l10.t.toFixed(1) + '）' : '—') + '</td>' +
       (isIdx ? '<td class="num ' + egCls(tw && tw.R, 0.2) + '">' + (tw ? egR(tw.R) + '（' + tw.n + '）' : '—') + '</td>' : '<td class="num ' + egCls(x.a200 && x.a200.R, 0.2) + '">' + (x.a200 ? egR(x.a200.R) : '—') + '</td><td class="num ' + egCls(x.near52 && x.near52.R, 0.2) + '">' + (x.near52 ? egR(x.near52.R) : '—') + '</td>') + '</tr>';
   }).join('');
   return '<div class="card" id="egTbl"><h3>全訊號統計<span class="r">' + (isIdx ? '加權＋標普＋那斯達克＋費半 ' + esc(D.universe.idxFrom) + ' 起（台指期代理，成本 ' + D.cost.IDX + '%）' : (mk === 'TW' ? '台股 ' + D.universe.TW : '美股 ' + D.universe.US) + ' 檔 · ' + esc(D.universe.from) + '～' + esc(D.universe.to) + ' · 成本 ' + D.cost[mk] + '%') + '</span></h3>' +
-    '<div class="filters" id="egCats"><button class="chipbtn" data-egc="" aria-pressed="' + (!EG.cat) + '">全部</button>' + cats.map(function (c) { return '<button class="chipbtn" data-egc="' + esc(c) + '" aria-pressed="' + (EG.cat === c) + '">' + esc(c) + '</button>'; }).join('') + '<span class="count">' + rows.length + ' 個訊號 · 點欄位排序</span></div>' +
+    '<div class="filters" id="egCats"><button class="chipbtn" data-egc="" aria-pressed="' + (!EG.cat) + '">全部</button>' + cats.map(function (c) { return '<button class="chipbtn" data-egc="' + esc(c) + '" aria-pressed="' + (EG.cat === c) + '">' + esc(c) + '</button>'; }).join('') + '<span class="count">' + rows.length + ' 個訊號 · 點欄位排序、點訊號名稱看示意圖</span></div>' +
     '<div class="tablewrap" style="border:0"><table class="trbl" style="min-width:900px"><thead>' + head + '</thead><tbody>' + body + '</tbody></table></div>' +
     '<div class="note">期望值以 R 計（趨勢型 1R＝2 ATR；回歸型 1R＝2 ATR、災難停損 3 ATR）。「比隨機」＝同一天在同市場隨機挑一檔、套同樣出場的期望值差，用來扣掉多頭行情的順風。10 日超額＝訊號後 10 個交易日報酬（已扣成本）減同日全市場平均，t 值依日期分群計算，|t| ≥ 3 才算穩定。個股為十年資料（' + esc(D.universe.from) + '～' + esc(D.universe.to) + '）；逐年、分條件與兩年版對照見「研究數據」頁。</div></div>';
 }
@@ -4381,7 +4412,7 @@ function renderEdge() {
   if (!D) { body.innerHTML = '<div class="pagehead"><div><h2>勝率庫</h2></div></div><div class="errbox">勝率庫資料（data/edge.json）未載入。</div>'; return; }
   if (!window.EdgeLab) { body.innerHTML = '<div class="errbox">訊號引擎未載入。</div>'; return; }
   var mk = EG.mk;
-  var html = '<div class="pagehead"><div><h2>勝率庫 · 型態與指標實證</h2><p>把全世界公開的型態統計（Bulkowski）、學術研究，和本站用台股 ' + D.universe.TW + ' 檔、美股 ' + D.universe.US + ' 檔、4 個指數 15 年跑的 ' + D.universe.events.toLocaleString() + ' 個訊號回測放在同一把尺上：勝率、期望值、比隨機進場多賺多少。下方掃描用與回測完全相同的規則找今天的訊號。</p></div><div class="tools"><div class="seg" id="egMk"><button data-egm="TW" aria-pressed="' + (mk === 'TW') + '">台股</button><button data-egm="US" aria-pressed="' + (mk === 'US') + '">美股</button><button data-egm="IDX" aria-pressed="' + (mk === 'IDX') + '">指數／期貨</button></div><a class="btn small" href="#/research">研究數據（全部回測）</a><a class="btn small" href="' + esc(D.doc) + '" target="_blank" rel="noopener">完整文件 ↗</a></div></div>';
+  var html = '<div class="pagehead"><div><h2>勝率庫 · 型態與指標實證</h2><p>把全世界公開的型態統計（Bulkowski）、學術研究，和本站用台股 ' + D.universe.TW + ' 檔、美股 ' + D.universe.US + ' 檔、4 個指數 15 年跑的 ' + D.universe.events.toLocaleString() + ' 個訊號回測放在同一把尺上：勝率、期望值、比隨機進場多賺多少。下方掃描用與回測完全相同的規則找今天的訊號。</p></div><div class="tools"><div class="seg" id="egMk"><button data-egm="TW" aria-pressed="' + (mk === 'TW') + '">台股</button><button data-egm="US" aria-pressed="' + (mk === 'US') + '">美股</button><button data-egm="IDX" aria-pressed="' + (mk === 'IDX') + '">指數／期貨</button></div><a class="btn small" href="#/signals">技術訊號圖解</a><a class="btn small" href="#/research">研究數據（全部回測）</a><a class="btn small" href="' + esc(D.doc) + '" target="_blank" rel="noopener">完整文件 ↗</a></div></div>';
   html += egRankCard(D);
   html += '<div style="margin-top:14px">' + egD52Card(D, mk) + '</div>';
   html += '<div style="margin-top:14px">' + egYearCard(D, mk) + '</div>';
@@ -5500,6 +5531,431 @@ function chipBox(code, a) {
   var fz = function (v) { return '<td class="num ' + (v > 0 ? 'up' : v < 0 ? 'dn' : '') + '">' + (v > 0 ? '+' : '') + v.toLocaleString() + '</td>'; };
   return '<div class="rs-sub" style="margin-top:14px">三大法人買賣超（張，至 ' + esc(String(c.date).replace(/^(\d{4})(\d\d)(\d\d)$/, '$1-$2-$3')) + '）</div><div class="tablewrap" style="border:0"><table class="trbl" style="min-width:0"><thead><tr><th></th><th class="num">最新 1 日</th><th class="num">近 ' + c.days + ' 日合計</th></tr></thead><tbody><tr><td>外資</td>' + fz(c.f1) + fz(c.f5) + '</tr><tr><td>投信</td>' + fz(c.t1) + fz(c.t5) + '</tr><tr><td>自營商</td>' + fz(c.d1) + fz(c.d5) + '</tr><tr><td><b>三大法人</b></td>' + fz(c.f1 + c.t1 + c.d1) + fz(c.tot5) + '</tr></tbody></table></div><div class="note" style="margin:4px 0 0">僅上市股票；上櫃股票暫無籌碼資料。外資買超＋投信買超同步，通常比單一法人可靠，但未經回測。</div>';
 }
+
+/* ===== 技術訊號圖解：合成 K 線示意圖（觸發點由勝率庫同一套偵測器 EdgeLab 決定） ===== */
+function sgHash(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function sgRng(seed) { return function () { seed = (seed + 0x6D2B79F5) | 0; var t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+// ---- 指標（與 EdgeLab 同定義） ----
+function sgSma(a, n) { var L = a.length, o = new Array(L).fill(NaN), s = 0; for (var i = 0; i < L; i++) { s += a[i]; if (i >= n) s -= a[i - n]; if (i >= n - 1) o[i] = s / n; } return o; }
+function sgEma(a, n) { var L = a.length, o = new Array(L), k = 2 / (n + 1); o[0] = a[0]; for (var i = 1; i < L; i++) o[i] = a[i] * k + o[i - 1] * (1 - k); return o; }
+function sgWilder(x, n) { var L = x.length, o = new Array(L).fill(NaN); if (L <= n) return o; var s = 0; for (var i = 1; i <= n; i++) s += x[i]; o[n] = s / n; for (i = n + 1; i < L; i++) o[i] = (o[i - 1] * (n - 1) + x[i]) / n; return o; }
+function sgWin(a, n, f, prev) { var L = a.length, o = new Array(L).fill(NaN); for (var i = 0; i < L; i++) { var e = prev ? i - 1 : i, b = e - n + 1; if (b < 0) continue; var m = a[b]; for (var j = b + 1; j <= e; j++) m = f(m, a[j]); o[i] = m; } return o; }
+function sgRsi(c, n) { var L = c.length, up = new Array(L).fill(0), dn = new Array(L).fill(0); for (var i = 1; i < L; i++) { var d = c[i] - c[i - 1]; up[i] = d > 0 ? d : 0; dn[i] = d < 0 ? -d : 0; } var au = sgWilder(up, n), ad = sgWilder(dn, n), r = new Array(L).fill(NaN); for (i = 0; i < L; i++) r[i] = ad[i] === 0 && au[i] === au[i] ? 100 : 100 - 100 / (1 + au[i] / ad[i]); return r; }
+function sgInd(B) {
+  var n = B.length, o = B.map(function (b) { return b.o; }), h = B.map(function (b) { return b.h; }), l = B.map(function (b) { return b.l; }), c = B.map(function (b) { return b.c; }), v = B.map(function (b) { return b.v; });
+  var I = { o: o, h: h, l: l, c: c, v: v, n: n, ma: {} };
+  [5, 10, 20, 50, 150, 200].forEach(function (p) { I.ma[p] = sgSma(c, p); });
+  var tr = c.map(function (x, i) { var pc = i ? c[i - 1] : c[0]; return Math.max(h[i] - l[i], Math.abs(h[i] - pc), Math.abs(l[i] - pc)); });
+  I.atr = sgWilder(tr, 14);
+  var sd = c.map(function (x, i) { if (i < 19) return NaN; var m = I.ma[20][i], q = 0; for (var j = i - 19; j <= i; j++) q += (c[j] - m) * (c[j] - m); return Math.sqrt(q / 20); });
+  I.bbU = c.map(function (x, i) { return I.ma[20][i] + 2 * sd[i]; }); I.bbL = c.map(function (x, i) { return I.ma[20][i] - 2 * sd[i]; });
+  I.bbw = c.map(function (x, i) { return (I.bbU[i] - I.bbL[i]) / I.ma[20][i]; }); I.bbwMin = sgWin(I.bbw, 120, Math.min, false);
+  I.rsi14 = sgRsi(c, 14); I.rsi2 = sgRsi(c, 2);
+  var lo9 = sgWin(l, 9, Math.min), hi9 = sgWin(h, 9, Math.max), k = 50, d = 50; I.K = new Array(n).fill(NaN); I.D = new Array(n).fill(NaN);
+  for (var i = 0; i < n; i++) { if (lo9[i] !== lo9[i]) continue; var rsv = hi9[i] === lo9[i] ? 50 : (c[i] - lo9[i]) / (hi9[i] - lo9[i]) * 100; k = 2 / 3 * k + rsv / 3; d = 2 / 3 * d + k / 3; I.K[i] = k; I.D[i] = d; }
+  var e12 = sgEma(c, 12), e26 = sgEma(c, 26); I.dif = c.map(function (x, i) { return e12[i] - e26[i]; }); I.dea = sgEma(I.dif, 9); I.hist = I.dif.map(function (x, i) { return x - I.dea[i]; });
+  var tp = c.map(function (x, i) { return (h[i] + l[i] + x) / 3; }); I.cci = tp.map(function (x, i) { if (i < 19) return NaN; var m = 0, j; for (j = i - 19; j <= i; j++) m += tp[j]; m /= 20; var md = 0; for (j = i - 19; j <= i; j++) md += Math.abs(tp[j] - m); md /= 20; return (x - m) / (0.015 * md); });
+  var pdm = new Array(n).fill(0), mdm = new Array(n).fill(0);
+  for (i = 1; i < n; i++) { var up = h[i] - h[i - 1], dn = l[i - 1] - l[i]; pdm[i] = up > dn && up > 0 ? up : 0; mdm[i] = dn > up && dn > 0 ? dn : 0; }
+  var st = sgWilder(tr.map(function (x, i) { return i ? x : 0; }), 14), sp = sgWilder(pdm, 14), sm = sgWilder(mdm, 14);
+  I.pdi = st.map(function (x, i) { return 100 * sp[i] / x; }); I.mdi = st.map(function (x, i) { return 100 * sm[i] / x; });
+  var dx = I.pdi.map(function (p, i) { var x = 100 * Math.abs(p - I.mdi[i]) / (p + I.mdi[i]); return x === x && isFinite(x) ? x : 0; }); I.adx = new Array(n).fill(NaN);
+  if (n > 28) { var s = 0; for (i = 15; i <= 28; i++) s += dx[i]; I.adx[28] = s / 14; for (i = 29; i < n; i++) I.adx[i] = (I.adx[i - 1] * 13 + dx[i]) / 14; }
+  var at10 = sgWilder(tr, 10), fu = new Array(n).fill(NaN), fl = new Array(n).fill(NaN), dir = new Array(n).fill(0);
+  for (i = 0; i < n; i++) { var mid = (h[i] + l[i]) / 2; fu[i] = mid + 3 * at10[i]; fl[i] = mid - 3 * at10[i]; }
+  for (i = 1; i < n; i++) { if (at10[i] !== at10[i] || at10[i - 1] !== at10[i - 1]) continue; var ub = (h[i] + l[i]) / 2 + 3 * at10[i], lb = (h[i] + l[i]) / 2 - 3 * at10[i]; fu[i] = (ub < fu[i - 1] || c[i - 1] > fu[i - 1]) ? ub : fu[i - 1]; fl[i] = (lb > fl[i - 1] || c[i - 1] < fl[i - 1]) ? lb : fl[i - 1]; dir[i] = dir[i - 1] === 0 ? (c[i] > fu[i] ? 1 : -1) : dir[i - 1] === 1 ? (c[i] < fl[i] ? -1 : 1) : (c[i] > fu[i] ? 1 : -1); }
+  I.stU = fu; I.stL = fl; I.stDir = dir;
+  var h26 = sgWin(h, 26, Math.max), l26 = sgWin(l, 26, Math.min), h52 = sgWin(h, 52, Math.max), l52 = sgWin(l, 52, Math.min);
+  I.ten = hi9.map(function (x, i) { return (x + lo9[i]) / 2; }); I.kij = h26.map(function (x, i) { return (x + l26[i]) / 2; });
+  var spa = I.ten.map(function (x, i) { return (x + I.kij[i]) / 2; }), spb = h52.map(function (x, i) { return (x + l52[i]) / 2; });
+  I.cA = c.map(function (x, i) { return i >= 26 ? spa[i - 26] : NaN; }); I.cB = c.map(function (x, i) { return i >= 26 ? spb[i - 26] : NaN; });
+  I.vavg = v.map(function (x, i) { if (i < 20) return NaN; var s2 = 0; for (var j = i - 20; j < i; j++) s2 += v[j]; return s2 / 20; });
+  var bc = 0, sc = 0; I.tdB = new Array(n).fill(0); I.tdS = new Array(n).fill(0);
+  for (i = 4; i < n; i++) { if (c[i] < c[i - 4]) { bc++; sc = 0; } else if (c[i] > c[i - 4]) { sc++; bc = 0; } else { bc = 0; sc = 0; } I.tdB[i] = bc; I.tdS[i] = sc; }
+  return I;
+}
+// ---- 合成價量：關鍵點內插＋平滑雜訊；fix() 可逐根改寫 ----
+function sgGen(sp, key) {
+  var N = sp.N || 320, V = sp.V || 80, S = N - V, rnd = sgRng(sgHash(key + '|' + (sp.seed || 0)));
+  var p0 = sp.kp && sp.kp.length ? sp.kp[0][1] : 100, pre = (sp.pre || [[0, p0 * 0.72], [S, p0]]).filter(function (p) { return p[0] < S; });
+  var pts = pre.concat((sp.kp || []).map(function (p) { return [S + p[0], p[1]]; })).sort(function (a, b) { return a[0] - b[0]; });
+  var c = new Array(N), nz = 0, q = sp.quiet || [];
+  for (var i = 0; i < N; i++) {
+    var k = 0; while (k < pts.length - 2 && pts[k + 1][0] <= i) k++;
+    var a = pts[k], b = pts[k + 1] || a, f = b[0] === a[0] ? 0 : Math.max(0, Math.min(1, (i - a[0]) / (b[0] - a[0]))), base = a[1] + (b[1] - a[1]) * f;
+    nz = 0.65 * nz + 0.35 * (rnd() * 2 - 1);
+    var amp = sp.nz == null ? 0.007 : sp.nz; q.forEach(function (r) { if (i - S >= r[0] && i - S <= r[1]) amp *= r[2]; });
+    c[i] = base * (1 + amp * nz);
+  }
+  var B = [];
+  for (i = 0; i < N; i++) {
+    var o = i ? c[i - 1] * (1 + (sp.gap == null ? 0.0025 : sp.gap) * (rnd() * 2 - 1)) : c[0], w = sp.wk == null ? 0.0045 : sp.wk;
+    var hi = Math.max(o, c[i]) * (1 + w * (0.25 + rnd())), lo = Math.min(o, c[i]) * (1 - w * (0.25 + rnd()));
+    B.push({ d: String(20200101 + i), o: o, h: hi, l: lo, c: c[i], v: 1000 * (0.8 + 0.4 * rnd()) * (sp.vf ? sp.vf(i - S, i) : 1) });
+  }
+  if (sp.fix) sp.fix(B, S, rnd);
+  return { B: B, S: S, V: V, N: N };
+}
+function sgFlip(B) { var M = 0; B.forEach(function (b) { M = Math.max(M, b.h); }); M = M * 1.0 + 100; return B.map(function (b) { return { d: b.d, o: M - b.o, h: M - b.l, l: M - b.h, c: M - b.c, v: b.v }; }); }
+// ---- 依回測規則模擬出場 ----
+function sgExit(I, t, fam, side) {
+  var e = I.c[t], atr = I.atr[t], stop = e - side * (fam === 'trend' ? 2 : 3) * atr, n = I.n, trail = [];
+  for (var k = t + 1; k < n; k++) {
+    var c = I.c[k];
+    if (side * (c - stop) <= 0) return { k: k, px: c, why: fam === 'trend' ? '停損' : '災難停損', stop: stop, trail: trail, R: side * (c - e) / (2 * atr) };
+    if (fam === 'trend') {
+      var ex = side === 1 ? Infinity : -Infinity; for (var j = k - 10; j < k; j++) ex = side === 1 ? Math.min(ex, I.l[j]) : Math.max(ex, I.h[j]);
+      trail.push([k, ex]);
+      if (side === 1 ? c < ex : c > ex) return { k: k, px: c, why: side === 1 ? '跌破 10 日低點' : '突破 10 日高點', stop: stop, trail: trail, R: side * (c - e) / (2 * atr) };
+    } else {
+      if (side === 1 ? c > I.ma[5][k] : c < I.ma[5][k]) return { k: k, px: c, why: side === 1 ? '站上 MA5' : '跌破 MA5', stop: stop, trail: trail, R: side * (c - e) / (2 * atr) };
+      if (k - t >= 10) return { k: k, px: c, why: '持有滿 10 天', stop: stop, trail: trail, R: side * (c - e) / (2 * atr) };
+    }
+  }
+  return { k: n - 1, px: I.c[n - 1], why: '持有中', stop: stop, trail: trail, R: side * (I.c[n - 1] - e) / (2 * atr), open: true };
+}
+var SG_FLIP = { s_donch20: 'donch20', s_ma5_20: 'ma5_20', s_ma20_dn: 'ma20_up', s_macd_dc: 'macd_gc', s_supertrend: 'supertrend', s_kd_high_dc: 'kd_low_gc', s_rsi2: 'rsi2', s_bb_upper: 'bb_lower', s_td9: 'td9', s_td13: 'td13', s_engulf: 'c_engulf', s_star: 'c_hammer', s_estar: 'c_mstar', s_dark: 'c_pierce', s_3bc: 'c_3ws' };
+var SG_CACHE = {}, SG_META = {};
+function sgBuild(k, sp0) {
+  if (SG_CACHE[k] && !sp0) return SG_CACHE[k];
+  var base = SG_FLIP[k] || k, sp = sp0 || SG_SPEC[base]; if (!sp) return null;
+  var side = SG_FLIP[k] ? -1 : 1, G = sgGen(sp, base), B = side === -1 ? sgFlip(G.B) : G.B;
+  var I = sgInd(B), hits = [], fired = false, t;
+  try { var R = window.EdgeLab.detect(B, 'stock'), a = R.S[k]; if (a) for (var i = G.S; i < G.N; i++) if (a[i]) hits.push(i); } catch (e) { }
+  var want = G.S + (sp.t == null ? Math.round(G.V * 0.55) : sp.t);
+  if (hits.length) { t = hits.reduce(function (p, x) { return Math.abs(x - want) < Math.abs(p - want) ? x : p; }, hits[0]); fired = true; } else t = want;
+  var famK = (SG_META[k] && SG_META[k].fam) || sp.fam || 'trend';
+  var X = sgExit(I, t, famK, side);
+  var out = { k: k, base: base, side: side, sp: sp, B: B, I: I, S: G.S, V: G.V, N: G.N, t: t, hits: hits, fired: fired, fam: famK, X: X };
+  if (!sp0) SG_CACHE[k] = out;
+  return out;
+}
+
+// 每個做多訊號的示意設計（做空訊號用對應做多訊號上下翻轉）：kp＝可視區關鍵點 [第幾根, 價格]；t＝預期觸發位置；ovl／panel＝圖上要畫的指標
+function sgMn(I, a, b) { var m = a; for (var i = a; i <= b; i++) if (I.l[i] < I.l[m]) m = i; return m; }
+function sgMx(I, a, b) { var m = a; for (var i = a; i <= b; i++) if (I.h[i] > I.h[m]) m = i; return m; }
+function sgSet(B, i, o, h, l, c, vm) { B[i].o = o; B[i].h = h; B[i].l = l; B[i].c = c; if (vm) B[i].v *= vm; }
+// K 線型態共用：先跌一段，t 在第 36 根
+var SG_KDOWN = [[0, 108], [14, 109], [30, 100], [34, 98.6]];
+var SG_KUP = function (p) { return [[38, p + 1.2], [44, p + 3], [55, p + 4]]; };
+var SG_SPEC = {
+  donch20: { kp: [[0, 100], [8, 104], [12, 101], [18, 105], [24, 100.5], [30, 104.5], [36, 101.2], [42, 104], [44, 103.6], [45, 108], [52, 113], [60, 118], [64, 116], [68, 112], [72, 109], [79, 111]], t: 45, quiet: [[6, 44, 0.6]], ovl: [['donch', 20]] },
+  donch55: { V: 100, pre: [[0, 72], [220, 100]], kp: [[0, 100], [8, 105.5], [16, 101], [26, 105.8], [36, 100.6], [46, 105.4], [56, 101.2], [63, 104.8], [64, 104.6], [65, 109.5], [74, 116], [82, 123], [86, 121], [90, 116], [94, 114], [99, 116]], t: 65, quiet: [[0, 64, 0.6]], ovl: [['donch', 55]] },
+  hi52: { V: 110, pre: [[0, 70], [210, 108]], kp: [[0, 108], [6, 113], [14, 104], [30, 96], [45, 100], [60, 104], [70, 109], [78, 111.2], [80, 116], [90, 124], [98, 121], [104, 115], [109, 117]], t: 80, ovl: [['hi52']] },
+  ma20_up: { kp: [[0, 100], [20, 108], [28, 111], [36, 106], [42, 103], [48, 102.5], [52, 104], [54, 107], [60, 112], [68, 116], [72, 113], [76, 110], [79, 111]], t: 54, ovl: [['ma', 20]] },
+  ma5_20: { kp: [[0, 100], [20, 108], [28, 111], [36, 106], [42, 103], [48, 102.5], [52, 104], [55, 107], [60, 112], [68, 116], [72, 113], [76, 110], [79, 111]], t: 56, ovl: [['ma', 5, 20]] },
+  golden: { N: 460, V: 200, line: true, pre: [[0, 80], [150, 112], [260, 100]], kp: [[0, 100], [40, 84], [70, 80], [100, 88], [130, 98], [150, 104], [170, 110], [185, 114], [192, 110], [199, 111]], t: 140, ovl: [['ma', 50, 200]] },
+  macd_gc: { kp: [[0, 100], [15, 108], [25, 112], [35, 104], [42, 100], [46, 99.5], [50, 102], [56, 107], [64, 113], [70, 111], [75, 107], [79, 108]], t: 48, panel: 'macd' },
+  macd_gc_above: { kp: [[0, 100], [20, 112], [28, 116], [34, 113], [38, 112.5], [42, 114], [48, 119], [56, 124], [62, 122], [68, 118], [79, 120]], t: 46, panel: 'macd' },
+  macd_gc_below: { kp: [[0, 100], [10, 104], [30, 92], [38, 88], [42, 87.5], [46, 89], [52, 93], [58, 97], [64, 99], [70, 95], [79, 96]], t: 44, panel: 'macd' },
+  adx: { kp: [[0, 100], [12, 102], [22, 99.5], [32, 101.5], [40, 99.5], [44, 100], [48, 103], [54, 109], [62, 116], [68, 120], [72, 118], [76, 114], [79, 115]], t: 52, quiet: [[0, 45, 0.6]], panel: 'adx' },
+  supertrend: { pre: [[0, 72], [230, 106], [240, 104]], kp: [[0, 104], [25, 96], [38, 92], [42, 93], [46, 96], [52, 101], [58, 106], [64, 110], [70, 108], [74, 104], [79, 105]], t: 45, ovl: [['st']] },
+  ichimoku: { pre: [[0, 72], [220, 108], [240, 104]], kp: [[0, 104], [20, 95], [30, 93], [38, 96], [44, 99], [48, 102], [54, 106], [60, 110], [66, 113], [70, 110], [75, 106], [79, 107]], t: 50, ovl: [['cloud']] },
+  kd_high: { kp: [[0, 100], [20, 103], [30, 101], [34, 102], [38, 105], [42, 109], [46, 113], [50, 116], [56, 118], [62, 117], [66, 114], [70, 111], [79, 112]], t: 42, panel: 'kd' },
+  kd_low_gc: { kp: [[0, 104], [15, 106], [30, 98], [36, 95], [38, 94.5], [40, 95.8], [44, 97], [50, 99], [60, 101], [79, 103]], t: 40, panel: 'kd' },
+  rsi14_30: { kp: [[0, 106], [10, 108], [34, 94], [38, 92.5], [40, 93.5], [44, 96], [52, 99], [79, 101]], t: 40, quiet: [[10, 38, 0.5]], panel: 'rsi14' },
+  rsi2: { kp: [[0, 100], [30, 110], [40, 114], [42, 115], [44, 113], [45, 111], [46, 110], [48, 112], [52, 115], [60, 118], [79, 120]], t: 46, quiet: [[40, 47, 0.3]], panel: 'rsi2', ovl: [['ma', 200, { nr: 1 }]] },
+  bb_lower: { kp: [[0, 100], [30, 103], [44, 102.6], [45, 99.2], [46, 98.9], [48, 100.6], [52, 102.2], [79, 104]], t: 45, quiet: [[26, 44, 0.25]], ovl: [['bb']] },
+  bb_upper: { kp: [[0, 100], [40, 102], [44, 101.5], [46, 105], [50, 108], [56, 111], [62, 113], [66, 110], [70, 108], [79, 109]], t: 46, quiet: [[20, 44, 0.5]], ovl: [['bb']] },
+  bb_squeeze: { kp: [[0, 100], [10, 103], [20, 104], [30, 104.5], [40, 104.3], [46, 104.6], [48, 107], [54, 111], [62, 115], [68, 113], [72, 110], [79, 111]], t: 48, quiet: [[16, 47, 0.22]], ovl: [['bb']], panel: 'bbw' },
+  nr7: { V: 60, kp: [[0, 100], [20, 106], [30, 104], [34, 105], [35, 105], [36, 107.5], [42, 112], [48, 115], [52, 112], [55, 109], [59, 110]], t: 36, ovl: [['nr7']],
+    fix: function (B, S) { var i = S + 34; sgSet(B, i, 104.2, 106.4, 103.6, 105.6); sgSet(B, i + 1, 105.0, 105.5, 104.9, 105.3); B[i + 2].o = 105.4; B[i + 2].l = 105.2; B[i + 2].c = 107.4; B[i + 2].h = 107.8; } },
+  cci: { kp: [[0, 104], [12, 106], [32, 96], [36, 94], [38, 93.8], [40, 95], [44, 97.5], [52, 100], [79, 102]], t: 40, panel: 'cci' },
+  down3: { V: 60, kp: [[0, 104], [32, 112], [33, 111.2], [34, 110.3], [35, 109.4], [37, 111], [42, 113.5], [59, 117]], t: 35, quiet: [[30, 36, 0.15]], ovl: [['ma', 10], ['down3']] },
+  td9: { V: 60, kp: [[0, 104], [20, 110], [32, 100], [33, 99.6], [35, 101], [40, 103], [59, 106]], t: 29, quiet: [[18, 34, 0.15]], ovl: [['td', 'b']] },
+  td13: { V: 70, pre: [[0, 80], [250, 110]], kp: [[0, 110], [6, 112], [30, 95], [32, 94.6], [34, 96], [40, 99], [50, 101], [69, 104]], t: 30, quiet: [[0, 34, 0.3]], ovl: [['td', 'b13']] },
+  c_engulf: { V: 56, kp: SG_KDOWN.concat(SG_KUP(98.8)), t: 36, ovl: [['ma', 10], ['kbox', 2]],
+    fix: function (B, S) { var i = S + 36; sgSet(B, i - 1, 98.9, 99.2, 97.8, 98.0); sgSet(B, i, 97.8, 99.65, 97.5, 99.5); } },
+  c_hammer: { V: 56, kp: SG_KDOWN.concat(SG_KUP(98)), t: 36, ovl: [['ma', 10], ['kbox', 1]],
+    fix: function (B, S) { var i = S + 36; sgSet(B, i - 1, 99.0, 99.3, 98.2, 98.4); sgSet(B, i, 97.7, 98.15, 96.2, 98.1); } },
+  c_mstar: { V: 56, kp: SG_KDOWN.concat(SG_KUP(99)), t: 36, ovl: [['ma', 10], ['kbox', 3]],
+    fix: function (B, S) { var i = S + 36; sgSet(B, i - 2, 100.6, 100.8, 98.4, 98.5); sgSet(B, i - 1, 98.0, 98.25, 97.4, 97.85); sgSet(B, i, 98.0, 100.0, 97.9, 99.85); } },
+  c_pierce: { V: 56, kp: SG_KDOWN.concat(SG_KUP(99)), t: 36, ovl: [['ma', 10], ['kbox', 2]],
+    fix: function (B, S) { var i = S + 36; sgSet(B, i - 1, 100.3, 100.5, 98.1, 98.2); sgSet(B, i, 97.6, 99.75, 97.4, 99.6); } },
+  c_harami: { V: 56, kp: SG_KDOWN.concat(SG_KUP(99)), t: 36, ovl: [['ma', 10], ['kbox', 2]],
+    fix: function (B, S) { var i = S + 36; sgSet(B, i - 1, 100.5, 100.7, 98.1, 98.2); sgSet(B, i, 98.6, 99.45, 98.45, 99.3); } },
+  c_3ws: { V: 56, kp: [[0, 104], [14, 106], [30, 99], [33, 97.6], [36, 101], [42, 105], [48, 108], [52, 105], [55, 104]], t: 36, ovl: [['ma', 10], ['kbox', 3]],
+    fix: function (B, S) { var i = S + 36; sgSet(B, i - 3, 98.2, 98.4, 97.3, 97.5); sgSet(B, i - 2, 97.6, 99.05, 97.45, 98.9); sgSet(B, i - 1, 98.4, 100.05, 98.3, 99.9); sgSet(B, i, 99.4, 101.15, 99.3, 101.0); } },
+  gap_up: { kp: [[0, 100], [20, 104], [30, 101.5], [40, 104], [44, 103.6], [45, 110.5], [52, 114], [60, 118], [64, 116], [68, 112], [72, 110], [79, 112]], t: 45, quiet: [[10, 44, 0.6]], panel: 'vol',
+    vf: function (j) { return j === 45 ? 3.4 : j > 45 && j < 50 ? 1.6 : 1; },
+    fix: function (B, S) { var i = S + 45; B[i].o = B[i - 1].c * 1.046; B[i].l = B[i].o * 0.997; B[i].c = B[i].o * 1.018; B[i].h = B[i].c * 1.003; } },
+  vol_break: { kp: [[0, 100], [8, 104], [14, 101], [22, 104.2], [30, 100.8], [38, 104], [44, 103.4], [45, 107.6], [52, 112], [60, 116], [64, 114], [68, 110], [72, 108.5], [79, 110]], t: 45, quiet: [[6, 44, 0.6]], panel: 'vol', ovl: [['donch', 20]],
+    vf: function (j) { return j === 45 ? 2.8 : 1; },
+    fix: function (B, S) { var i = S + 45; B[i].o = B[i - 1].c * 1.002; B[i].c = B[i - 1].c * 1.042; B[i].h = B[i].c * 1.002; B[i].l = B[i].o * 0.997; } },
+  box: { kp: [[0, 96], [6, 101], [12, 106.2], [18, 101], [24, 105.8], [30, 100.8], [36, 106], [42, 101.5], [45, 105.6], [46, 109], [54, 114], [62, 118], [66, 115], [70, 111], [79, 112]], t: 46, quiet: [[5, 45, 0.5]], ovl: [['box', 40]] },
+  flag: { kp: [[0, 96], [12, 99], [20, 100], [30, 124], [33, 121], [35, 123], [38, 119.5], [40, 121.5], [42, 118.5], [43, 120], [44, 126], [50, 132], [56, 136], [60, 133], [64, 129], [68, 127], [79, 129]], t: 44, quiet: [[20, 43, 0.4]], ovl: [['flag']] },
+  w_bottom: { V: 90, pre: [[0, 76], [215, 112], [230, 112]], kp: [[0, 112], [10, 108], [22, 96], [24, 95], [27, 98], [34, 103.5], [40, 99], [46, 95.5], [48, 96], [52, 99], [58, 102], [62, 104], [64, 106.5], [70, 111], [78, 114], [83, 110], [89, 111]], t: 64, quiet: [[16, 62, 0.35]], ovl: [['wb']] },
+  ihs: { V: 90, pre: [[0, 76], [215, 108], [230, 106]], kp: [[0, 106], [10, 103], [18, 96], [22, 100.5], [24, 102], [30, 96], [36, 90], [42, 96], [46, 102.5], [50, 99.5], [56, 96.5], [60, 99], [66, 102], [68, 105], [74, 109], [80, 112], [84, 107], [89, 104]], t: 68, quiet: [[10, 66, 0.25]], ovl: [['ihs']] },
+  asc_tri: { kp: [[0, 98], [8, 95], [14, 100], [20, 105.8], [28, 98.5], [38, 105.9], [45, 101.8], [52, 105.5], [56, 103.5], [59, 108.5], [66, 113], [72, 116], [76, 111], [79, 109]], t: 59, quiet: [[5, 58, 0.3]], ovl: [['asc']] },
+  sym_tri: { kp: [[0, 104], [8, 107], [14, 110], [24, 96.3], [34, 105.8], [42, 99.8], [48, 101.5], [52, 104.5], [58, 109], [64, 113], [70, 110], [74, 107], [79, 108]], t: 52, quiet: [[5, 51, 0.3]], ovl: [['sym']] },
+  cup: { N: 360, V: 150, pre: [[0, 75], [210, 104]], kp: [[0, 104], [10, 110], [20, 106], [35, 96], [55, 88], [75, 95], [90, 104], [100, 109], [104, 107], [110, 103.5], [115, 106], [116, 107.5], [118, 111], [126, 116], [134, 119], [140, 115], [149, 116]], t: 118, quiet: [[0, 117, 0.4]], ovl: [['cup']] },
+  vcp: { N: 330, V: 110, pre: [[0, 60], [180, 95], [220, 108]], kp: [[0, 108], [10, 118], [22, 106], [34, 116.5], [46, 108.5], [58, 116], [68, 110.5], [76, 115.2], [80, 113.4], [84, 115.4], [87, 114.6], [88, 118], [96, 125], [102, 129], [106, 125], [109, 123]], t: 88, quiet: [[76, 87, 0.3]], panel: 'vol', ovl: [['ma', 50], ['vcp']],
+    vf: function (j) { return j === 88 ? 2.6 : j >= 76 && j < 88 ? 0.5 : j >= 60 && j < 76 ? 0.75 : 1; } }
+};
+SG_SPEC.c_engulf.fam = SG_SPEC.c_hammer.fam = SG_SPEC.c_mstar.fam = SG_SPEC.c_pierce.fam = SG_SPEC.c_harami.fam = 'mr';
+
+// ---- 示意圖繪製 ----
+var SG_CLIP = 0, SG_MAC = { 5: '#d99a1e', 10: '#b07cf0', 20: '#3b82f6', 50: '#a855f7', 150: '#14a3b8', 200: '#ec7a2c' };
+function sgF(x) { return (Math.round(x * 10) / 10).toFixed(1); }
+function sgPath(pts) { var d = '', pen = false; pts.forEach(function (p) { if (p == null || p[1] !== p[1] || !isFinite(p[1])) { pen = false; return; } d += (pen ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); pen = true; }); return d; }
+function sgSVG(R, o) {
+  o = o || {}; var mini = !!o.mini, I = R.I, S = R.S, V = R.V, N = R.N, t = R.t, X = R.X, side = R.side, sp = R.sp, ovl = sp.ovl || [], panel = sp.panel;
+  var W = 720, L = 8, RM = mini ? 8 : 56, T = mini ? 8 : 26, PH = panel ? (mini ? 150 : 214) : (mini ? 200 : 262), GAP = 14, QH = panel ? (mini ? 50 : 84) : 0, H = T + PH + (panel ? GAP + QH : 0) + (mini ? 6 : 12);
+  var pw = W - L - RM, bw = pw / V, xs = function (i) { return L + (i - S + 0.5) * bw; };
+  var lo = Infinity, hi = -Infinity, inc = function (v) { if (v === v && isFinite(v)) { lo = Math.min(lo, v); hi = Math.max(hi, v); } };
+  for (var i = S; i < N; i++) { inc(I.l[i]); inc(I.h[i]); }
+  inc(X.stop);
+  var out = [], top = [], leg = [], lab = [];
+  // 疊圖資料
+  ovl.forEach(function (ov) {
+    var ty = ov[0], fl = typeof ov[ov.length - 1] === 'object' ? ov[ov.length - 1] : {};
+    if (ty === 'ma') ov.slice(1).forEach(function (p) { if (typeof p !== 'number') return; if (!fl.nr) for (var i = S; i < N; i++) inc(I.ma[p][i]); });
+    if (ty === 'bb') for (i = S; i < N; i++) { inc(I.bbU[i]); inc(I.bbL[i]); }
+    if (ty === 'cloud') for (i = S; i < N; i++) { inc(I.cA[i]); inc(I.cB[i]); }
+    if (ty === 'st') for (i = S; i < N; i++) inc(I.stDir[i] === side ? (side === 1 ? I.stL[i] : I.stU[i]) : (side === 1 ? I.stU[i] : I.stL[i]));
+  });
+  var pad = (hi - lo) * 0.07; lo -= pad; hi += pad * (mini ? 1 : 1.6);
+  var ys = function (p) { return T + (hi - p) / (hi - lo) * PH; };
+  var line = function (pts, col, w, dash, op) { var d = sgPath(pts); return d ? '<path d="' + d + '" fill="none" stroke="' + col + '" stroke-width="' + ((w || 1.4) * (mini ? 2.2 : 1)).toFixed(1) + '"' + (dash ? ' stroke-dasharray="' + dash + '"' : '') + (op ? ' opacity="' + op + '"' : '') + ' stroke-linejoin="round"/>' : ''; };
+  var txt = function (x, y, s, col, anc, sz, wt) { return mini ? '' : '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" fill="' + (col || 'var(--ink2)') + '" font-size="' + (sz || 11) + '" text-anchor="' + (anc || 'middle') + '"' + (wt ? ' font-weight="' + wt + '"' : '') + ' paint-order="stroke" stroke="var(--panel)" stroke-width="3">' + s + '</text>'; };
+  var ser = function (a, from, to) { var p = []; for (var i = from == null ? S : from; i <= (to == null ? N - 1 : to); i++) p.push([xs(i), ys(a[i])]); return p; };
+  var tag = function (i, text, at, col, dy) { var y = at === 'h' ? ys(I.h[i]) - 8 - (dy || 0) : at === 'l' ? ys(I.l[i]) + 16 + (dy || 0) : ys(at) - 6 - (dy || 0); lab.push(txt(xs(i), y, text, col || 'var(--ink2)', 'middle', 11, 600)); };
+  var hl = function (p, i0, i1, col, label, dash, anc) { out.push(line([[xs(i0), ys(p)], [xs(i1), ys(p)]], col, 1.4, dash || '5 3')); if (label) lab.push(txt(anc === 'end' ? xs(i1) : xs(i0) + 2, ys(p) - 5, label, col, anc === 'end' ? 'end' : 'start', 11, 600)); };
+  // 格線
+  if (!mini) for (var g = 0; g <= 4; g++) { var gp = lo + (hi - lo) * g / 4, gy = ys(gp); top.push('<line x1="' + L + '" x2="' + (W - RM) + '" y1="' + gy.toFixed(1) + '" y2="' + gy.toFixed(1) + '" stroke="var(--line)" stroke-width="1"/>'); top.push('<text x="' + (W - RM + 6) + '" y="' + (gy + 4).toFixed(1) + '" fill="var(--ink3)" font-size="10.5">' + sgF(gp) + '</text>'); }
+  // 進場那根的底色
+  top.push('<rect x="' + (xs(t) - bw * 0.8).toFixed(1) + '" y="' + T + '" width="' + (bw * 1.6).toFixed(1) + '" height="' + (PH + (panel ? GAP + QH : 0)) + '" fill="var(--accent)" opacity=".10"/>');
+  ovl.forEach(function (ov) {
+    var ty = ov[0], fl = typeof ov[ov.length - 1] === 'object' ? ov[ov.length - 1] : {};
+    if (ty === 'ma') ov.slice(1).forEach(function (p) { if (typeof p !== 'number') return; out.push(line(ser(I.ma[p]), SG_MAC[p] || '#888', 1.5)); leg.push([SG_MAC[p], 'MA' + p]); });
+    else if (ty === 'bb') { var up = ser(I.bbU), dn = ser(I.bbL); out.push('<path d="' + sgPath(up) + 'L' + sgPath(dn.slice().reverse()).slice(1) + 'Z" fill="#3b82f6" opacity=".08"/>'); out.push(line(up, '#3b82f6', 1.2)); out.push(line(dn, '#3b82f6', 1.2)); out.push(line(ser(I.ma[20]), '#3b82f6', 1, '4 3', 0.8)); leg.push(['#3b82f6', '布林通道（20 日、2σ）']); }
+    else if (ty === 'donch') { var n = ov[1], st = []; for (i = S; i < N; i++) { var m = -Infinity; for (var j = i - n; j < i; j++) m = Math.max(m, side === 1 ? I.h[j] : -I.l[j]); var v = side === 1 ? m : -m; st.push([xs(i) - bw / 2, ys(v)]); st.push([xs(i) + bw / 2, ys(v)]); } out.push(line(st, '#d99a1e', 1.4, '5 3')); leg.push(['#d99a1e', (side === 1 ? '前 ' + n + ' 日最高' : '前 ' + n + ' 日最低')]); }
+    else if (ty === 'hi52') { var mx = -Infinity, mi = t; for (i = t - 250; i < t; i++) if (I.c[i] > mx) { mx = I.c[i]; mi = i; } hl(mx, Math.max(S, mi), t - 2, '#d99a1e', '52 週最高收盤 ' + sgF(mx), null, 'end'); if (mi >= S) tag(mi, '前高', 'h', '#d99a1e'); }
+    else if (ty === 'st') { var segs = [], cur = []; for (i = S; i < N; i++) { var d = I.stDir[i], vv = d === 1 ? I.stL[i] : I.stU[i]; if (cur.length && cur.d !== d) { segs.push(cur); cur = []; } cur.d = d; cur.push([xs(i), ys(vv)]); } segs.push(cur); segs.forEach(function (s) { out.push(line(s, s.d === 1 ? 'var(--up)' : 'var(--dn)', 2)); }); leg.push(['var(--up)', 'SuperTrend 多']); leg.push(['var(--dn)', 'SuperTrend 空']); }
+    else if (ty === 'cloud') { for (i = S; i < N - 1; i++) { var a1 = I.cA[i], b1 = I.cB[i], a2 = I.cA[i + 1], b2 = I.cB[i + 1]; if (a1 !== a1 || b1 !== b1) continue; out.push('<path d="M' + xs(i).toFixed(1) + ' ' + ys(a1).toFixed(1) + 'L' + xs(i + 1).toFixed(1) + ' ' + ys(a2).toFixed(1) + 'L' + xs(i + 1).toFixed(1) + ' ' + ys(b2).toFixed(1) + 'L' + xs(i).toFixed(1) + ' ' + ys(b1).toFixed(1) + 'Z" fill="' + (a1 >= b1 ? 'var(--up)' : 'var(--dn)') + '" opacity=".14"/>'); } out.push(line(ser(I.ten), '#3b82f6', 1.3)); out.push(line(ser(I.kij), '#ec7a2c', 1.3)); leg.push(['#3b82f6', '轉換線 9']); leg.push(['#ec7a2c', '基準線 26']); leg.push(['var(--ink3)', '雲層（前推 26 根）']); }
+    else if (ty === 'nr7') { hl(I.h[t - 1], t - 4, Math.min(N - 1, t + 4), '#d99a1e', null, '4 3'); out.push('<rect x="' + (xs(t - 1) - bw * 0.75).toFixed(1) + '" y="' + (ys(I.h[t - 2]) - 4).toFixed(1) + '" width="' + (bw * 1.5).toFixed(1) + '" height="' + (ys(I.l[t - 2]) - ys(I.h[t - 2]) + 8).toFixed(1) + '" rx="4" fill="none" stroke="#d99a1e" stroke-width="1.3"/>'); tag(t - 1, 'NR7＋內包線', side === 1 ? 'h' : 'l', '#d99a1e', 14); }
+    else if (ty === 'down3') { for (var q = 2; q >= 0; q--) tag(t - q, String(3 - q), side === 1 ? 'h' : 'l', 'var(--ink2)'); }
+    else if (ty === 'td') {
+      var cnt = side === 1 ? I.tdB : I.tdS, at = side === 1 ? 'l' : 'h';
+      if (ov[1] === 'b') { for (i = t - 8; i <= t; i++) lab.push(txt(xs(i), side === 1 ? ys(I.h[i]) - 7 : ys(I.l[i]) + 15, String(cnt[i]), cnt[i] === 9 ? 'var(--accent)' : 'var(--ink3)', 'middle', cnt[i] === 9 ? 13 : 10.5, cnt[i] === 9 ? 700 : 400)); }
+      else {
+        var s9 = -1; for (i = t; i >= S; i--) if (cnt[i] === 9) { s9 = i; break; }
+        if (s9 >= 0) for (i = s9 - 8; i <= s9; i++) lab.push(txt(xs(i), side === 1 ? ys(I.h[i]) - 7 : ys(I.l[i]) + 15, String(cnt[i]), cnt[i] === 9 ? 'var(--ink)' : 'var(--ink3)', 'middle', 10, cnt[i] === 9 ? 700 : 400));
+        var cd = 0; for (i = s9 + 1; s9 >= 0 && i <= t; i++) { if (side === 1 ? I.c[i] <= I.l[i - 2] : I.c[i] >= I.h[i - 2]) { cd++; lab.push(txt(xs(i), side === 1 ? ys(I.h[i]) - 7 : ys(I.l[i]) + 15, String(cd), cd >= 13 ? 'var(--accent)' : '#d99a1e', 'middle', cd >= 13 ? 13 : 10.5, cd >= 13 ? 700 : 500)); } }
+        leg.push(['var(--ink3)', '灰字：' + (side === 1 ? '買進' : '賣出') + '結構 1–9']); leg.push(['#d99a1e', '橘字：13 轉計數']);
+      }
+    }
+    else if (ty === 'kbox') { var nb = ov[1], ka = t - nb + 1, ph = -Infinity, pl = Infinity; for (i = ka; i <= t; i++) { ph = Math.max(ph, I.h[i]); pl = Math.min(pl, I.l[i]); } out.push('<rect x="' + (xs(ka) - bw * 0.75).toFixed(1) + '" y="' + (ys(ph) - 5).toFixed(1) + '" width="' + ((t - ka) * bw + bw * 1.5).toFixed(1) + '" height="' + (ys(pl) - ys(ph) + 10).toFixed(1) + '" rx="5" fill="none" stroke="#d99a1e" stroke-width="1.4"/>'); }
+    else if (ty === 'box') { var bt = -Infinity, bb = Infinity; for (i = t - 40; i < t; i++) { bt = Math.max(bt, I.h[i]); bb = Math.min(bb, I.l[i]); } out.push('<rect x="' + (xs(t - 40) - bw / 2).toFixed(1) + '" y="' + ys(bt).toFixed(1) + '" width="' + (40 * bw).toFixed(1) + '" height="' + (ys(bb) - ys(bt)).toFixed(1) + '" fill="#d99a1e" opacity=".08" stroke="#d99a1e" stroke-dasharray="5 3"/>'); lab.push(txt(xs(t - 40) + 4, ys(bt) - 5, '箱頂 ' + sgF(bt), '#d99a1e', 'start', 11, 600)); lab.push(txt(xs(t - 40) + 4, ys(bb) + 15, '箱底 ' + sgF(bb) + '（區間 ' + Math.round((bt / bb - 1) * 100) + '%，40 日）', '#d99a1e', 'start', 11, 600)); }
+    else if (ty === 'flag') { var pt = sgMx(I, t - 25, t - 5), b0 = sgMn(I, pt - 15, pt - 1), fh = I.h[pt]; for (i = pt; i < t; i++) fh = Math.max(fh, I.h[i]); out.push(line([[xs(b0), ys(I.l[b0])], [xs(pt), ys(I.h[pt])]], '#d99a1e', 2.4, null, 0.8)); lab.push(txt((xs(b0) + xs(pt)) / 2 - 10, (ys(I.l[b0]) + ys(I.h[pt])) / 2, '旗桿 +' + Math.round((I.h[pt] / I.l[b0] - 1) * 100) + '%', '#d99a1e', 'end', 11, 600)); hl(fh, pt, t + 2, '#d99a1e', null, '4 3'); lab.push(txt((xs(pt) + xs(t)) / 2, ys(fh) - 6, '旗面（回檔 ≤ 旗桿一半）', '#d99a1e', 'middle', 11, 600)); }
+    else if (ty === 'wb') { var i2 = sgMn(I, t - 25, t - 8), i1 = sgMn(I, i2 - 35, i2 - 10), ni = sgMx(I, i1 + 1, i2 - 1); hl(I.h[ni], i1, t + 2, '#d99a1e', '頸線 ' + sgF(I.h[ni])); tag(i1, '第一底', 'l'); tag(i2, '第二底（差 ≤3%）', 'l'); }
+    else if (ty === 'ihs') { var p3 = sgMn(I, t - 18, t - 6), p2 = sgMn(I, p3 - 30, p3 - 10), p1 = sgMn(I, p2 - 26, p2 - 8), nk = Math.max(I.h[sgMx(I, p1, p2)], I.h[sgMx(I, p2, p3)]); hl(nk, p1, t + 2, '#d99a1e', '頸線 ' + sgF(nk)); tag(p1, '左肩', 'l'); tag(p2, '頭', 'l'); tag(p3, '右肩', 'l'); }
+    else if (ty === 'asc') { var rs = sgMx(I, t - 45, t - 1), q2 = sgMn(I, t - 18, t - 6), q1 = sgMn(I, t - 36, t - 22), sl = (I.l[q2] - I.l[q1]) / (q2 - q1); hl(I.h[rs], t - 45, t + 2, '#d99a1e', '水平壓力 ' + sgF(I.h[rs])); out.push(line([[xs(q1 - 6), ys(I.l[q1] - 6 * sl)], [xs(t), ys(I.l[q1] + (t - q1) * sl)]], '#3b82f6', 1.5, '5 3')); tag(q1, '低點', 'l'); tag(q2, '低點墊高', 'l'); }
+    else if (ty === 'sym') { var a = sgMx(I, t - 45, t - 30), b = sgMx(I, t - 25, t - 12), u1 = sgMn(I, a, b), u2 = sgMn(I, b, t - 4), s1 = (I.h[b] - I.h[a]) / (b - a), s2 = (I.l[u2] - I.l[u1]) / (u2 - u1); out.push(line([[xs(a), ys(I.h[a])], [xs(t + 2), ys(I.h[a] + (t + 2 - a) * s1)]], '#d99a1e', 1.5, '5 3')); out.push(line([[xs(u1), ys(I.l[u1])], [xs(t + 2), ys(I.l[u1] + (t + 2 - u1) * s2)]], '#3b82f6', 1.5, '5 3')); tag(a, '高點', 'h'); tag(b, '高點降低', 'h'); tag(u1, '低點', 'l'); tag(u2, '低點墊高', 'l'); }
+    else if (ty === 'cup') { var hs = sgMx(I, t - 25, t - 4), A = sgMx(I, Math.max(S, hs - 110), hs - 30), cl = sgMn(I, A + 1, hs - 1), hd = sgMn(I, hs + 1, t - 1); hl(I.h[hs], A, hs - 3, '#d99a1e', '杯緣 ' + sgF(I.h[hs]), null, 'end'); tag(A, '左緣', 'h', '#d99a1e', 10); tag(cl, '杯底（回檔 ' + Math.round((1 - I.l[cl] / I.h[A]) * 100) + '%）', 'l'); tag(hs, '右緣', 'h', '#d99a1e', 10); tag(hd, '柄', 'l'); }
+    else if (ty === 'vcp') { var zz = [], dirz = 0, ext = S, k; for (k = S + 1; k < t; k++) { if (dirz >= 0 && I.h[k] >= I.h[ext]) { ext = k; dirz = 1; } else if (dirz <= 0 && I.l[k] <= I.l[ext]) { ext = k; dirz = -1; } else if (dirz === 1 && I.l[k] < I.h[ext] * 0.975) { zz.push([ext, 1]); ext = k; dirz = -1; } else if (dirz === -1 && I.h[k] > I.l[ext] * 1.025) { zz.push([ext, -1]); ext = k; dirz = 1; } } var nC = 0; for (k = 0; k < zz.length - 1; k++) if (zz[k][1] === 1 && zz[k + 1][1] === -1) { nC++; var dp = (1 - I.l[zz[k + 1][0]] / I.h[zz[k][0]]) * 100; tag(zz[k + 1][0], '收縮 ' + nC + '：−' + dp.toFixed(0) + '%', 'l'); } }
+  });
+  // K 線
+  var cand = [];
+  if (sp.line) cand.push(line(ser(I.c), 'var(--ink)', 1.6));
+  else for (i = S; i < N; i++) {
+    var x = xs(i), up2 = I.c[i] >= I.o[i], col = up2 ? 'var(--up)' : 'var(--dn)', y1 = ys(Math.max(I.o[i], I.c[i])), y2 = ys(Math.min(I.o[i], I.c[i]));
+    cand.push('<line x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + ys(I.h[i]).toFixed(1) + '" y2="' + ys(I.l[i]).toFixed(1) + '" stroke="' + col + '" stroke-width="' + Math.max(mini ? 2 : 1, bw * 0.12).toFixed(1) + '"/>');
+    cand.push('<rect x="' + (x - bw * 0.34).toFixed(1) + '" y="' + y1.toFixed(1) + '" width="' + (bw * 0.68).toFixed(1) + '" height="' + Math.max(1, y2 - y1).toFixed(1) + '" fill="' + (up2 ? 'var(--panel)' : col) + '" stroke="' + col + '" stroke-width="1"/>');
+  }
+  // 交易：停損、移動停利、進出場
+  var tr = [], xk = Math.min(X.k, N - 1), ent = I.c[t];
+  tr.push(line([[xs(t), ys(X.stop)], [xs(xk), ys(X.stop)]], 'var(--crit)', 1.4, '6 4'));
+  tr.push(txt(xs(t) + 9, ys(X.stop) + (side === 1 ? 14 : -6), (R.fam === 'trend' ? '初始停損 2ATR ' : '災難停損 3ATR ') + sgF(X.stop), 'var(--crit)', 'start', 10.5, 600));
+  if (R.fam === 'trend' && X.trail.length) { var stp = []; X.trail.forEach(function (p) { stp.push([xs(p[0]) - bw / 2, ys(p[1])]); stp.push([xs(p[0]) + bw / 2, ys(p[1])]); }); tr.push(line(stp, 'var(--warn)', 1.4, '2 3')); }
+  else if (R.fam !== 'trend') tr.push(line(ser(I.ma[5], t, xk), '#d99a1e', 1.4, '2 2'));
+  var ey = side === 1 ? ys(I.l[t]) + 7 : ys(I.h[t]) - 7, tri = function (x, y, upw, col) { var s2 = mini ? 9 : 7; return '<path d="M' + x.toFixed(1) + ' ' + y.toFixed(1) + 'l' + (-s2) + ' ' + (upw ? s2 * 1.5 : -s2 * 1.5) + 'h' + (2 * s2) + 'Z" fill="' + col + '"/>'; };
+  tr.push(tri(xs(t), ey, side === 1, 'var(--accent)'));
+  tr.push(side === 1 ? txt(xs(t) - 10, ey + 11, '進場 ' + sgF(ent), 'var(--accent)', 'end', 11.5, 700) : txt(xs(t), ey - 16, '放空 ' + sgF(ent), 'var(--accent)', 'middle', 11.5, 700));
+  if (!X.open) { var xy = side === 1 ? ys(I.h[xk]) - 7 : ys(I.l[xk]) + 7; tr.push(tri(xs(xk), xy, side !== 1, 'var(--warn)')); var xT = (side === 1 ? '出場：' : '回補：') + X.why + '（' + (X.R >= 0 ? '+' : '') + X.R.toFixed(1) + 'R）', xR = xs(xk) - 6 + xT.length * 11 < W - RM; tr.push(txt(xR ? xs(xk) - 6 : xs(xk) + 6, side === 1 ? xy - 16 : xy + 24, xT, 'var(--warn)', xR ? 'start' : 'end', 11, 700)); }
+  // 副圖
+  var pan = [];
+  if (panel) {
+    var Y0 = T + PH + GAP, pl2 = [], series = [], refs = [], pmin, pmax, bars = null;
+    if (panel === 'vol') { bars = []; for (i = S; i < N; i++) bars.push([i, I.v[i], I.c[i] >= I.o[i]]); series.push([I.vavg, '#d99a1e', '20 日均量']); pmin = 0; pmax = 0; for (i = S; i < N; i++) pmax = Math.max(pmax, I.v[i]); }
+    else if (panel === 'rsi14' || panel === 'rsi2') { series.push([panel === 'rsi14' ? I.rsi14 : I.rsi2, 'var(--accent)', panel === 'rsi14' ? 'RSI(14)' : 'RSI(2)']); refs = panel === 'rsi14' ? [30, 70] : [10, 90]; pmin = 0; pmax = 100; }
+    else if (panel === 'kd') { series.push([I.K, '#d99a1e', 'K(9)']); series.push([I.D, '#3b82f6', 'D']); refs = [20, 80]; pmin = 0; pmax = 100; }
+    else if (panel === 'macd') { bars = []; for (i = S; i < N; i++) bars.push([i, I.hist[i], I.hist[i] >= 0]); series.push([I.dif, '#d99a1e', 'DIF']); series.push([I.dea, '#3b82f6', 'DEA（訊號線）']); refs = [0]; }
+    else if (panel === 'cci') { series.push([I.cci, 'var(--accent)', 'CCI(20)']); refs = [-100, 100]; }
+    else if (panel === 'adx') { series.push([I.adx, 'var(--accent)', 'ADX(14)']); series.push([I.pdi, 'var(--up)', '+DI']); series.push([I.mdi, 'var(--dn)', '−DI']); refs = [25]; }
+    else if (panel === 'bbw') { series.push([I.bbw, '#3b82f6', '布林帶寬']); series.push([I.bbwMin, '#d99a1e', '120 日最低帶寬']); }
+    if (pmin == null) { pmin = Infinity; pmax = -Infinity; series.forEach(function (s) { for (var i = S; i < N; i++) if (s[0][i] === s[0][i]) { pmin = Math.min(pmin, s[0][i]); pmax = Math.max(pmax, s[0][i]); } }); refs.forEach(function (r) { pmin = Math.min(pmin, r); pmax = Math.max(pmax, r); }); if (bars) bars.forEach(function (b) { pmin = Math.min(pmin, b[1]); pmax = Math.max(pmax, b[1]); }); var pp = (pmax - pmin) * 0.08; pmin -= pp; pmax += pp; }
+    var qy = function (v) { return Y0 + (pmax - v) / (pmax - pmin) * QH; };
+    pan.push('<rect x="' + L + '" y="' + Y0 + '" width="' + pw + '" height="' + QH + '" fill="none" stroke="var(--line)"/>');
+    refs.forEach(function (r) { pan.push(line([[L, qy(r)], [W - RM, qy(r)]], 'var(--ink3)', 1, '3 3')); if (!mini) pan.push('<text x="' + (W - RM + 6) + '" y="' + (qy(r) + 4).toFixed(1) + '" fill="var(--ink3)" font-size="10.5">' + r + '</text>'); });
+    if (bars) bars.forEach(function (b) { var y0 = qy(Math.max(0, pmin)), y1 = qy(b[1]); pan.push('<rect x="' + (xs(b[0]) - bw * 0.34).toFixed(1) + '" y="' + Math.min(y0, y1).toFixed(1) + '" width="' + (bw * 0.68).toFixed(1) + '" height="' + Math.max(0.8, Math.abs(y1 - y0)).toFixed(1) + '" fill="' + (b[2] ? 'var(--up)' : 'var(--dn)') + '" opacity="' + (b[0] === t ? 0.95 : 0.45) + '"/>'); });
+    series.forEach(function (s) { var p = []; for (var i = S; i < N; i++) p.push([xs(i), qy(s[0][i])]); pan.push(line(p, s[1], 1.5)); });
+    var ks = series[0][0][t]; if (panel === 'vol') { ks = I.v[t]; pan.push(txt(xs(t), qy(I.v[t]) - 4, (I.v[t] / I.vavg[t]).toFixed(1) + ' 倍', 'var(--accent)', 'middle', 11, 700)); } else if (ks === ks) pan.push('<circle cx="' + xs(t).toFixed(1) + '" cy="' + qy(ks).toFixed(1) + '" r="' + (mini ? 5 : 4) + '" fill="var(--accent)" stroke="var(--panel)" stroke-width="1.5"/>');
+    if (!mini) { var lx = L + 6; series.forEach(function (s) { pan.push('<text x="' + lx + '" y="' + (Y0 + 13) + '" fill="' + s[1] + '" font-size="10.5" font-weight="600">' + s[2] + '</text>'); lx += s[2].length * 9 + 22; }); }
+  }
+  // 圖例
+  var lg = '';
+  if (!mini) { var lx2 = L; leg.forEach(function (x) { lg += '<rect x="' + lx2 + '" y="9" width="14" height="3" fill="' + x[0] + '"/><text x="' + (lx2 + 18) + '" y="15" fill="var(--ink2)" font-size="11">' + x[1] + '</text>'; lx2 += 26 + x[1].length * 11; }); }
+  var cid = 'sgc' + (++SG_CLIP);
+  return '<svg viewBox="0 0 ' + W + ' ' + H + '" class="sgsvg' + (mini ? ' mini' : '') + '" role="img" aria-label="' + (o.aria || '') + '" font-family="inherit"><defs><clipPath id="' + cid + '"><rect x="' + L + '" y="' + (T - 4) + '" width="' + pw + '" height="' + (PH + 8) + '"/></clipPath></defs>' + top.join('') + '<g clip-path="url(#' + cid + ')">' + out.join('') + cand.join('') + tr.join('') + '</g>' + lab.join('') + pan.join('') + lg + '</svg>';
+}
+
+var SG_DEF = {
+  w_bottom: '兩個樞軸低點（前後 5 根內最低）相隔 10～60 根、相差 ≤3%；中間最高點為頸線（距兩底各 ≥3 根），頸線高於底 ≥6%；第一底之前 60 根內曾有高於底 10% 的價位。第二底後 5～60 根內收盤突破頸線（期間未跌破底 −3%）。',
+  ihs: '三個樞軸低點，各相隔 5～40 根；中間的頭比兩肩低 ≥3%，兩肩相差 ≤5%；頸線＝兩段反彈高點的較高者，高於頭 ≥6%。右肩後 5～45 根內收盤突破頸線（期間未跌破右肩 −3%）。',
+  asc_tri: '兩個樞軸高點相隔 5～60 根、相差 ≤2%（水平壓力）；期間內兩個低點後者比前者高 ≥2%；壓力高於第一低點 ≥6%。收盤突破水平壓力（之前未跌破第二低點），最多等 40 根。',
+  sym_tri: '兩個高點後者比前者低 ≥2%、兩個低點後者比前者高 ≥2%、第一高點高於第一低點 ≥6%。收盤突破兩高點連成的下降趨勢線（30 根內、未跌破第二低點）。',
+  box: '前 40 日的高低區間在 5～15% 之間，收盤突破前 40 日最高價；同一檔每 40 根只取一次。',
+  flag: '旗桿：前 4～25 根內的最高點，比它之前 15 根的最低點高 ≥20%；旗面：旗桿頂後 5～20 根，回檔不超過旗桿的一半。收盤突破旗面高點；每 10 根只取一次。',
+  cup: '左緣＝近 20～150 根的最高點 A；杯底回檔 12～40%、杯長 ≥30 根；右緣（近 25 根內高點）在 A 的 ±5%；柄部回檔 ≤12% 且在杯體上半部。收盤突破右緣高點；每 20 根只取一次。',
+  vcp: '通過趨勢模板（收盤 > MA150 > MA200、MA200 高於 20 日前、MA50 > MA150、收盤 > MA50、高於 250 日低點 25%、距 250 日高點 ≤25%）；近 10 根振幅 ≤10% 且小於前一段（t−30～t−10）振幅的 60%；近 10 日均量 < 前 50 日均量的 80%。收盤突破 10 日高且量 ≥1.5 倍 20 日均量。',
+  hi52: '收盤創 250 日新高，且前 20 日內沒有出現過新高（這波的第一次）。',
+  donch20: '收盤 > 前 20 日最高價。',
+  donch55: '收盤 > 前 55 日最高價。',
+  gap_up: '開盤比前收高 ≥4%、成交量 ≥2 倍 20 日均量、收盤 ≥ 開盤。',
+  vol_break: '成交量 ≥2 倍 20 日均量、收盤漲 ≥3%、收在當日區間上 25%、收盤 > 前 20 日最高價。',
+  nr7: '前一根是 7 日內最窄區間且為內包線（高低都在前前根之內），今日收盤突破前一根高點。',
+  bb_squeeze: '布林（20 日、2σ）帶寬在近 6 根內曾是 120 日最小，且收盤由下向上穿越上軌。',
+  bb_upper: '收盤由下向上穿越布林上軌（20 日、2σ）。',
+  ma5_20: 'MA5 由下向上穿越 MA20。',
+  ma20_up: '收盤由下向上穿越 MA20。',
+  golden: 'MA50 由下向上穿越 MA200。',
+  macd_gc: 'DIF（EMA12−EMA26）由下向上穿越 DEA（DIF 的 EMA9）。',
+  macd_gc_above: 'MACD 金叉且 DIF > 0（零軸之上）。',
+  macd_gc_below: 'MACD 金叉且 DIF < 0（零軸之下）。',
+  adx: 'ADX(14) 由下向上穿越 25，且 +DI > −DI。',
+  supertrend: 'SuperTrend（10 日 ATR、3 倍）方向由空翻多。',
+  ichimoku: '收盤由下向上穿越雲層上緣（先行帶 A、B 較高者，前推 26 根），且轉換線(9) > 基準線(26)。',
+  kd_high: 'KD(9,3,3) 的 K 值連續 3 日 >80，第 3 日觸發（之前不是）。',
+  kd_low_gc: 'K 由下向上穿越 D，且 K < 20。',
+  rsi14_30: 'RSI(14) 由下向上穿越 30。',
+  rsi2: 'RSI(2) < 10 且收盤 > MA200（Connors）。',
+  bb_lower: '收盤由上向下跌破布林下軌（20 日、2σ）。',
+  cci: 'CCI(20) 由下向上穿越 −100。',
+  down3: '連續 3 根收盤下跌，且收盤 > MA200。',
+  td9: '連續 9 根收盤低於 4 根前的收盤（TD 買進結構完成）。',
+  td13: '買進結構 9 完成後，累計 13 根「收盤 ≤ 2 根前低點」的 K 棒（可不連續），且第 13 根低點 ≤ 第 8 根收盤。',
+  c_engulf: '跌勢中（前一日收盤 < MA10 且 < 6 日前收盤）：前一根黑 K，今日紅 K 開盤 ≤ 前收、收盤 ≥ 前開，實體大於前一根。',
+  c_hammer: '跌勢中：下影線 ≥2 倍實體、上影線 ≤10% 當日區間、實體不為零。',
+  c_mstar: '跌勢中：前前根長黑（實體 ≥10 日平均實體）、前一根小實體（≤ 前前根 30%）且整根在其收盤之下、今日紅 K 收盤高於前前根實體中點。',
+  c_pierce: '跌勢中：前一根長黑，今日開盤低於前收、紅 K 收盤高於前根實體中點但低於前開。',
+  c_harami: '跌勢中：前一根長黑，今日紅 K 實體完全在前根實體之內且小於其一半。',
+  c_3ws: '連續 3 根紅 K，收盤逐根墊高，每根開盤在前一根實體之內，第 3 根上影線 ≤25% 區間，且 3 根前收盤 < MA10。',
+  s_donch20: '收盤 < 前 20 日最低價。',
+  s_ma5_20: 'MA5 由上向下穿越 MA20。',
+  s_ma20_dn: '收盤由上向下跌破 MA20。',
+  s_macd_dc: 'DIF 由上向下穿越 DEA。',
+  s_supertrend: 'SuperTrend（10, 3）方向由多翻空。',
+  s_kd_high_dc: 'K 由上向下穿越 D，且 K > 80。',
+  s_rsi2: 'RSI(2) > 90 且收盤 < MA200。',
+  s_bb_upper: '收盤由下向上穿越布林上軌，做空等回歸。',
+  s_td9: '連續 9 根收盤高於 4 根前的收盤（TD 賣出結構完成）。',
+  s_td13: '賣出結構 9 完成後，累計 13 根「收盤 ≥ 2 根前高點」的 K 棒，且第 13 根高點 ≥ 第 8 根收盤。',
+  s_engulf: '漲勢中（前一日收盤 > MA10 且 > 6 日前收盤）：前一根紅 K，今日黑 K 開盤 ≥ 前收、收盤 ≤ 前開，實體大於前一根。',
+  s_star: '漲勢中：上影線 ≥2 倍實體、下影線 ≤10% 當日區間。',
+  s_estar: '漲勢中：前前根長紅、前一根小實體且在其上、今日黑 K 收盤低於前前根實體中點。',
+  s_dark: '漲勢中：前一根長紅，今日開盤高於前收、黑 K 收盤低於前根實體中點但高於前開。',
+  s_3bc: '連續 3 根黑 K，收盤逐根走低，每根開盤在前一根實體之內，第 3 根下影線 ≤25% 區間，且 3 根前收盤 > MA10。'
+};
+
+var SG_GUIDE = {"ok":{"ichimoku":{"q":1,"lv":"主力訊號","mkt":"指數／台指期","dl":[["定義","一目均衡表：收盤站上雲層，且轉換線 > 基準線。"],["怎麼看","雲層厚薄代表支撐強度；遲行線也在價格上方更佳。"],["進場依據","條件成立當日收盤。"],["停損","雲層下緣或基準線。"],["出場","跌破雲層或轉換線下穿基準線。"],["參數／辨識","轉換線 9、基準線 26、雲 52；價 > 雲上緣且轉換線 > 基準線。加權指數用。"],["常見錯誤","個股套用。"],["結論","台股個股 +0.27R、10 日超額 −0.47%（t −6.74）；指數 +0.51R、加權 +0.86R（34 筆）。和 SuperTrend 一樣：指數用、個股不用。"]]},"td9":{"q":1,"lv":"可用","mkt":"指數／台指期","dl":[["定義","TD Sequential 買進 Setup：連續 9 根收盤低於 4 天前收盤。"],["怎麼看","數完 9 就算成立；第 8、9 根低於第 6、7 根為「完美 9」。"],["進場依據","9 完成當日收盤買。"],["停損","進場價 −3 ATR（日線）。"],["出場","收盤站上 MA5，最多持有 5 天。"],["參數／辨識","連續 9 根收盤 < 4 根前收盤；完美 9：第 8 或 9 根低點 < 第 6、7 根低點。指數／台指期專用、只做多。賣 9 當多單減碼訊號。"],["常見錯誤","台股個股買 9（t −12.6）；賣 9 放空（−0.16R）。反而「賣 9 完成時順勢做多」在台股 +0.36R、近 52 週高 +0.49R。"],["實例","加權買 9 完成收盤 20,000、ATR 250 → 進場，停損 19,250（3 ATR），站上 MA5 或 5 天出場；15 年 83 筆、勝率 72%、PF 1.78。"],["結論","指數 15 年勝率 81%、PF 3.4；加權 88%、PF 4.7。台股個股勝率 57% 但 −0.05R、10 日超額 −0.74%（t −12.63），不要用在個股。只做多、只做指數與台指期。"]]},"rsi2":{"q":1,"lv":"可用","mkt":"指數／台指期","dl":[["定義","Connors 的 RSI(2) <10 且股價在 MA200 之上（多頭中的極短線超賣）。"],["怎麼看","MA200 之上是必要條件，否則是接刀。"],["進場依據","當日收盤買，持有 2～3 天。"],["停損","3 ATR 災難停損，用部位控制風險。"],["出場","收盤站上 MA5，或滿 10 天。"],["參數／辨識","RSI(2) < 10 且收盤 > MA200；指數專用。出場：收盤 > MA5 或 10 天。"],["常見錯誤","用緊停損（會把勝率打掉）；用在個股。"],["實例","加權 RSI2 跌到 6、指數在 MA200 上 → 收盤進場，3 ATR 災難停損，平均 2～3 天站上 MA5 出場，每筆約 +0.1～0.2R。"],["結論","指數勝率 73%、+0.16R、PF 1.76；加權 72%、+0.12R；台股個股 58% 但 −0.04R。高勝率薄利型，只做指數。"]]},"down3":{"q":1,"lv":"可用","mkt":"指數／台指期","dl":[["定義","連續 3 根黑 K，且股價在 MA200 之上。"],["怎麼看","多頭中的短暫回檔；MA200 之上才算。"],["進場依據","第 3 根黑 K 收盤買。"],["停損","3 ATR。"],["出場","站上 MA5 或 10 天。"],["參數／辨識","連 3 黑且收盤 > MA200；指數專用。"],["常見錯誤","個股使用。"],["實例","加權連 3 黑、仍在 MA200 上 → 第 3 根收盤進場，站上 MA5 出場。"],["結論","指數勝率 74%、+0.16R、PF 1.82；加權 71%、+0.12R。個股 58% 但 −0.04R。和 RSI2 同屬「指數回歸」組合。"]]},"bb_lower":{"q":1,"lv":"可用","mkt":"指數／台指期","dl":[["定義","收盤跌破布林下軌。"],["怎麼看","教科書的超賣買點。"],["進場依據","指數可、個股不可。"],["停損","3 ATR。"],["出場","站上 MA5 或 10 天。"],["參數／辨識","收盤 < 下軌。指數專用回歸。"],["常見錯誤","台股個股抄底（t −14.9）。"],["結論","台股個股 −0.12R、10 日超額 −0.95%（t −14.89），避開清單第二名；指數勝率 72%、+0.14R 可用。"]]},"c_harami":{"q":1,"lv":"可用","mkt":"指數／台指期","dl":[["定義","長黑後一根小 K 完全在前一根實體內。"],["怎麼看","中性訊號，Bulkowski 說 53%＝隨機。"],["進場依據","指數可、個股不可。"],["停損","3 ATR。"],["出場","站上 MA5。"],["參數／辨識","長黑後小 K 完全在前實體內；指數可用。"],["結論","台股 −0.06R；指數勝率 72%、+0.11R、加權 +0.17R，PF 2.3。意外地是指數回歸裡還不錯的一個。"]]},"hi52":{"q":2,"lv":"主力訊號","mkt":"台股個股","dl":[["定義","收盤創 52 週新高，且過去 20 天沒創過（第一次站上）。"],["怎麼看","配合量能 >20 日均量；不要怕「太高」，距高 <3% 的股反而最強。"],["進場依據","創高當日收盤買進。"],["停損","2 ATR 或突破前整理區低點。"],["出場","跌破 10 日低點；讓它跑。"],["參數／辨識","參數：收盤 > 過去 252 日最高收盤，且前 20 日內沒出現過。加分：當日量 > 20 日均量、MA50 > MA200、大盤 > MA50。"],["常見錯誤","把「創新高＝太貴」當理由不敢買；或在創高後等回檔，結果強勢股不回檔。另一個錯誤是創高當天追到漲停價：規則是收盤買，不是盤中追。"],["實例","進場 100 元、ATR(14)＝3 → 停損 94（2 ATR）。本金 100 萬、每筆風險 1%＝1 萬 → 可買 1 萬 ÷ 6 ≈ 1,666 股（約 1.6 張）。之後每天看 10 日最低點，收盤跌破才賣。"],["結論","台股十年 +0.59R、比隨機 +0.44R、10 日超額 +1.34%（t 6.67），每一年都為正，是整個勝率庫最穩定的單一訊號。勝率只有 37%，靠賺賠比 3.4：1 獲利。"],["穩定度","逐年平均 R，10/10 年為正"]]},"vcp":{"q":2,"lv":"主力訊號","mkt":"台股個股","dl":[["定義","Minervini 的波動收縮型態：每次回檔幅度逐次縮小（如 25%→15%→8%），量越縮越小，最後帶量突破。"],["怎麼看","先過趨勢模板（股價 > MA50 > MA150 > MA200、距 52 週低 ≥30%、距高 <25%），再數收縮次數 ≥2。"],["進場依據","最後一次收縮高點（樞紐）當日收盤突破。"],["停損","樞紐下 5～8%，或最後收縮的低點。"],["出場","跌破 10 日低點；或獲利 2～3R 後分批。"],["參數／辨識","趨勢模板 8 條（Minervini）：價 > MA150 > MA200；MA200 上升至少 1 個月；MA50 > MA150；價 > MA50；距 52 週低 ≥ 30%；距 52 週高 ≤ 25%；RS 排名前 30%；收縮 2～4 次且幅度遞減、最後一次收縮 < 10%、量縮到底。"],["常見錯誤","只數收縮不看趨勢模板（低檔的 VCP 是假的）；樞紐突破當天沒量也追；把每次收縮低點都當買點（只有最後樞紐才是）。"],["實例","收縮 22% → 12% → 6%，樞紐 120。突破當天收 123、量 2 倍 → 停損 樞紐下 6% ≈ 113 或 2 ATR，取近者；出場跌破 10 日低。"],["結論","台股 +0.51R、比隨機 +0.34R，接近 52 週高時 +0.66R，型態類第一。美股個股 −0.06R，不要套用。"],["穩定度","逐年平均 R，8/10 年為正"]]},"gap_up":{"q":2,"lv":"主力訊號","mkt":"台股個股","dl":[["定義","跳空開高 ≥4%、量 ≥2 倍均量、收盤收紅不回補缺口。"],["怎麼看","缺口當天收盤要在開盤價之上；事件（財報、法說）造成的缺口最有力。"],["進場依據","當日收盤買進，不等回補。"],["停損","缺口下緣（回補即停損）或 2 ATR。"],["出場","跌破 10 日低點。"],["參數／辨識","參數：開盤價 ≥ 前收 ×1.04、全日量 ≥ 20 日均量 ×2、收盤 > 開盤。缺口要在整理區上方，不是跌深反彈的缺口。"],["常見錯誤","缺口當天衝高回落收黑也買（規則要收紅）；缺口之後第 2～3 天回補一半就恐慌賣（停損是收盤回補缺口下緣，不是盤中）。"],["實例","前收 50、開 52.5、收 54、量 3 倍。停損設缺口下緣 50（風險 4 元）或 2 ATR，取近者。"],["結論","台股 +0.45R、比隨機 +0.22R、10 日超額 +1.18%（t 5.18）；大盤弱勢時也有效（rgDn +0.55R），是少數不怕大盤的訊號。美股 +0.18R。"],["穩定度","逐年平均 R，9/10 年為正"]]},"supertrend":{"q":2,"lv":"可用","mkt":"指數／台指期","dl":[["定義","SuperTrend（ATR 通道）由空翻多，收盤站上通道線。"],["怎麼看","參數 10、3；翻多後通道線就是移動停損。"],["進場依據","翻多當日收盤。"],["停損","SuperTrend 線（自帶停損）。"],["出場","SuperTrend 翻空。"],["參數／辨識","參數 (10, 3)：ATR 通道翻多，線在價格下方。加權指數用。"],["常見錯誤","個股套用（沒優勢）。"],["實例","台指期：翻多當日收盤進場，SuperTrend 線當移動停損，翻空出場；加權 PF 3.0。"],["結論","台股個股 +0.27R、10 日超額 −0.55%（t −6.04），個股沒優勢；指數 +0.43R、加權 +0.80R（勝率 56%、PF 3.0），是台指期方向判斷的好工具。"]]},"cup":{"q":2,"lv":"主力訊號","mkt":"台股個股","dl":[["定義","U 形圓底（杯）後，右側小幅回檔（柄），突破柄高。"],["怎麼看","杯深 12～33%、杯長 7 週以上；柄在杯上半部、量縮。"],["進場依據","突破柄高（樞紐點）當日收盤。"],["停損","樞紐點下 7～8% 或 2 ATR，取近者。"],["出場","跌破 10 日低點。"],["參數／辨識","杯：深度 12～33%、長度 7～65 週、杯底圓不尖；柄：在杯上半部、回檔 < 杯深一半、量縮、長 1～4 週。樞紐＝柄的最高點。"],["常見錯誤","柄回檔太深（> 杯深一半）代表賣壓沒消化；杯太深（> 35%）是崩跌後反彈不是杯。"],["實例","杯高 100→杯底 75→右側回到 98，柄回到 92 再突破 98.5 樞紐 → 進場 98.5、停損 92（柄低）或 2 ATR。"],["結論","台股 +0.41R、比隨機 +0.25R，型態類第三；美股個股無效（≈0）。"],["穩定度","逐年平均 R，8/10 年為正"]]},"kd_high":{"q":2,"lv":"主力訊號","mkt":"台股個股、指數／台指期","dl":[["定義","K 值 >80 連續 3 日（高檔鈍化）。"],["怎麼看","教科書叫你賣，回測說鈍化＝強勢延續。"],["進場依據","第 3 天收盤買。"],["停損","2 ATR。"],["出場","K 值跌破 80 後再跌破 10 日低點。"],["參數／辨識","KD(9,3,3)；K > 80 連續 3 日。方向：買，不是賣。"],["常見錯誤","看到 K > 80 就賣（回測是延續）。"],["實例","第 3 天收盤進場、停損 2 ATR、K 跌破 80 且破 10 日低出場。"],["結論","台股 +0.41R、比隨機 +0.16R、勝率 36%；加權 +0.64R。KD 系列裡唯一正期望值的用法，而且方向和多數人相反。"],["穩定度","逐年平均 R，10/11 年為正"]]},"donch55":{"q":2,"lv":"主力訊號","mkt":"台股個股、指數／台指期","dl":[["定義","收盤突破 55 日最高價（海龜法則 System 2）。"],["怎麼看","比 20 日少雜訊，是最簡單穩健的趨勢規則。"],["進場依據","突破當日收盤；海龜加碼法：每賺 1 ATR 再加一單位，最多 3 單位。"],["停損","2 ATR。"],["出場","跌破 10 日（海龜用 20 日）低點。"],["參數／辨識","參數：收盤 > 過去 55 日最高。海龜原版：進場 1 單位＝本金 1% ÷ ATR，每漲 0.5 ATR 加 1 單位，最多 4 單位，停損 2 ATR，出場跌破 20 日低。本站版本出場用 10 日低。"],["常見錯誤","每個 55 日新高都做：大盤 < MA50 時期望值掉一半，要先看大盤；距 52 週高 > 20% 的 55 日新高是反彈不是趨勢。"],["實例","進場後價格漲 1 ATR 再加碼第二單位、再漲 1 ATR 加第三單位，三單位停損一起移到最後進場價 − 2 ATR。"],["結論","台股 +0.38R、比隨機 +0.22R（t 4.93）；指數 +0.35R、加權 +0.61R。台股、指數、期貨三邊都有效。"],["穩定度","逐年平均 R，9/11 年為正"]]},"flag":{"q":2,"lv":"主力訊號","mkt":"台股個股","dl":[["定義","先有一根 ≥20% 的急漲旗桿，接著 1～3 週小幅回檔整理（旗面），再突破旗面高。"],["怎麼看","旗桿要陡、旗面要量縮且回檔 <旗桿一半。"],["進場依據","突破旗面高點當日收盤。"],["停損","旗面低點下方或 2 ATR。"],["出場","跌破 10 日低點。"],["參數／辨識","旗桿：≤ 15 個交易日內漲 ≥ 20%；旗面：回檔 ≤ 旗桿 50%、長 5～15 日、量縮、高低點平行或微向下。"],["常見錯誤","旗桿不夠陡（慢漲 20% 不是旗桿）；旗面拖太久（> 4 週變箱型）。"],["實例","旗桿 80→100，旗面 100→92 橫 8 天，突破 100 進場、停損 92。目標旗桿等高：100＋20＝120（但不在 120 賣，等跌破 10 日低）。"],["結論","台股 +0.38R、10 日超額 +0.85%（t 4.5），是強勢股的第二段進場，每年都成立。"],["穩定度","逐年平均 R，9/11 年為正"]]},"ma20_up":{"q":2,"lv":"可用","mkt":"指數／台指期","dl":[["定義","收盤站上 MA20（月線）。"],["怎麼看","最基本的多空分界；單獨當訊號太頻繁。"],["進場依據","當日收盤。"],["停損","MA20 下方 2～3%。"],["出場","收盤跌破 MA20。"],["參數／辨識","收盤 > MA20。當濾網：MA20 之下不做多單進場。"],["常見錯誤","當進場訊號（最頻繁、最差）。"],["結論","台股 +0.23R，10 日超額 −0.59%（t −12.73），短線最差的訊號之一；指數 +0.37R、加權 +0.53R。當濾網用，不當進場用。"]]},"box":{"q":2,"lv":"可用","mkt":"台股個股","dl":[["定義","40 日內股價在 5～15% 區間橫盤，收盤突破箱頂。"],["怎麼看","箱子越窄、時間越長越好；突破要帶 1.5 倍以上量。"],["進場依據","收盤突破箱頂當天。"],["停損","箱頂下 3% 或箱子中線（取近者），2 ATR 上限。"],["出場","跌破 10 日低點。"],["參數／辨識","箱型：40 日內最高最低差 5～15%、至少碰頂 2 次碰底 2 次；突破：收盤 > 箱頂。接近 52 週高的箱型才做。"],["常見錯誤","箱子區間 > 15% 是寬幅震盪不是箱型；突破後第 1 天就回箱內（假突破）要果斷停損。"],["實例","箱 90～100，收盤 101.5 突破 → 進場，停損 97（箱頂下 3%）或箱中線 95，取近者。"],["結論","台股 +0.34R、比隨機 +0.18R；接近 52 週高的箱型 +0.62R，是型態類第二強。低檔箱型不做。"],["穩定度","逐年平均 R，9/11 年為正"]]},"nr7":{"q":2,"lv":"可用","mkt":"指數／台指期","dl":[["定義","當天高低區間是 7 天內最窄（NR7），隔天收盤突破這根窄 K 的高點。"],["怎麼看","窄幅＝波動壓縮，突破方向看大盤。"],["進場依據","突破 NR7 高點當日收盤。"],["停損","NR7 低點下方（很近）或 2 ATR。"],["出場","跌破 10 日低點。"],["參數／辨識","NR7：當日高低差為 7 日內最小；隔天收盤 > NR7 高點。"],["常見錯誤","用在個股短線（10 日超額負）；只有指數版可用。"],["實例","NR7 高 102 低 100，隔天收 103 → 進場，停損 99.5（NR7 低下方）。"],["結論","台股 +0.22R、比隨機 +0.06R、10 日超額 −0.43%（t −4.66）：短線其實輸隨機，長抱才勉強正。指數版 +0.32R 可用。"]]},"donch20":{"q":2,"lv":"可用","mkt":"台股個股、指數／台指期","dl":[["定義","收盤突破過去 20 日最高價（唐奇安通道上緣）。"],["怎麼看","訊號很多（台股 3.7 萬筆），要配 52 週位置與大盤濾網才有用。"],["進場依據","突破當日收盤。"],["停損","2 ATR。"],["出場","跌破 10 日低點。"],["結論","台股 +0.32R、比隨機 +0.11R；用在指數／台指期 +0.48～0.58R 更好。"],["穩定度","逐年平均 R，9/11 年為正"]]},"asc_tri":{"q":2,"lv":"可用","mkt":"台股個股","dl":[["定義","高點一條水平壓力、低點一路墊高，壓縮到尾端向上突破。"],["怎麼看","至少碰壓力 2 次、低點墊高 2 次；突破前量縮、突破時量放大。"],["進場依據","突破水平壓力當日收盤。"],["停損","三角形最後一個低點下方或 2 ATR。"],["出場","跌破 10 日低點。"],["參數／辨識","壓力線：至少 2 個高點在同一價位 ±2%；支撐：至少 2 個低點逐步墊高；形成 3～8 週；突破要收盤過壓力線。"],["常見錯誤","在三角形內低接（規則是等突破）；三角形尾端已經過了 3/4 才突破的失敗率高（Bulkowski）。"],["實例","壓力 50，低點 45→47→48.5，收盤 51 突破 → 進場 51、停損 48.5（最後低點）。"],["結論","台股 +0.31R、比隨機 +0.18R，型態類裡中上；接近 52 週高時 +0.49R。"],["穩定度","逐年平均 R，6/10 年為正"]]},"macd_gc_above":{"q":2,"lv":"可用","mkt":"台股個股","dl":[["定義","零軸上方的 MACD 金叉（多頭回檔後再起漲）。"],["怎麼看","零軸上代表中期趨勢向上，金叉是回檔結束。"],["進場依據","交叉當日收盤。"],["停損","回檔低點下方或 2 ATR。"],["出場","跌破 10 日低點。"],["參數／辨識","DIF > 0 時 DIF 上穿 DEA。對應多頭回檔結束。"],["常見錯誤","零軸上下混用。"],["實例","回檔低點 95、金叉當天收 99 → 進場、停損 94。"],["結論","台股 +0.31R、比隨機 +0.17R；加權 +0.72R（52 筆）。MACD 系列裡唯一能用的。"],["穩定度","逐年平均 R，9/11 年為正"]]},"bb_upper":{"q":2,"lv":"可用","mkt":"台股個股","dl":[["定義","收盤站上布林上軌（MA20＋2σ）。"],["怎麼看","教科書說超買要賣，回測說是趨勢延續。"],["進場依據","當日收盤順勢買。"],["停損","中軌或 2 ATR。"],["出場","跌破 10 日低點。"],["參數／辨識","布林 20, 2σ；收盤 > 上軌。順勢做多，不是賣。"],["常見錯誤","把站上上軌當超買賣掉。"],["實例","收盤 105 > 上軌 104 → 進場，停損中軌 100。"],["結論","台股 +0.31R、比隨機 +0.10R；加權 +0.57R。單獨平庸，接近 52 週高時 +0.55R。"],["穩定度","逐年平均 R，9/11 年為正"]]},"adx":{"q":2,"lv":"可用","mkt":"台股個股","dl":[["定義","ADX 上穿 25 且 +DI > −DI（趨勢啟動且方向向上）。"],["怎麼看","ADX 只說趨勢強度，方向看 DI；上穿 25 代表盤整結束。"],["進場依據","當日收盤。"],["停損","2 ATR。"],["出場","ADX 轉頭向下或跌破 10 日低點。"],["參數／辨識","ADX(14) 由下穿上 25，且 +DI > −DI。"],["常見錯誤","ADX 高＝一定漲（ADX 不分方向）。"],["結論","台股 +0.29R、比隨機 +0.11R；加權 +0.67R（32 筆）。接近 52 週高時 +0.51R。"],["穩定度","逐年平均 R，9/11 年為正"]]},"vol_break":{"q":2,"lv":"可用","mkt":"台股個股","dl":[["定義","長紅 ≥3%、量 ≥2 倍、收盤突破 20 日高。"],["怎麼看","沒有跳空的帶量突破；和跳空相比優勢小很多。"],["進場依據","當日收盤。"],["停損","2 ATR。"],["出場","跌破 10 日低點。"],["參數／辨識","當日漲幅 ≥ 3%、量 ≥ 2 倍 20 日均量、收盤 > 20 日最高。"],["常見錯誤","量大 ≠ 有效：帶量但位置低（距高 > 20%）的突破仍輸隨機。"],["實例","長紅 4%、量 2.5 倍、收 20 日新高 → 當日收盤進場，停損 2 ATR。"],["結論","台股 +0.28R、比隨機 +0.10R；接近 52 週高時 +0.52R，否則平庸。"],["穩定度","逐年平均 R，9/11 年為正"]]}},"no":{"kd_low_gc":"指數 +0.08R、勝率 58%；個股 -0.07R","c_engulf":"指數 +0.06R、勝率 67%；個股 -0.10R","c_pierce":"指數 +0.05R、勝率 70%；個股 -0.11R","rsi14_30":"指數 +0.04R、勝率 62%；個股 -0.07R","ma5_20":"台股 +0.25R、比隨機 +0.07R、10 日超額 t -9.75；指數 +0.36R","macd_gc":"指數 +0.4R 只是指數大多頭的結果；個股 10 日超額 t −14，只教零軸上金叉","sym_tri":"台股 +0.24R、比隨機 +0.04R、10 日超額 t -2.04","w_bottom":"台股 +0.22R、比隨機 +0.05R、10 日超額 t -1.67","macd_gc_below":"指數 +0.4R 只是指數大多頭的結果；個股 10 日超額 t −14，只教零軸上金叉","golden":"台股 +0.19R、比隨機 +0.04R、10 日超額 t -1.55；指數 +0.29R","c_3ws":"台股 +0.18R、比隨機 +0.05R、10 日超額 t -3.38；指數 +0.34R","bb_squeeze":"台股 +0.17R、比隨機 -0.01R、10 日超額 t -2.99；指數 -0.18R","ihs":"台股 +0.14R、比隨機 -0.03R、10 日超額 t -1.25","c_hammer":"指數 +0.03R、勝率 70%；個股 -0.10R","s_rsi2":"做空訊號全部負期望值或約等於零","cci":"指數 +0.00R、勝率 58%；個股 -0.09R","td13":"指數 -0.02R、勝率 58%；個股 -0.10R","s_kd_high_dc":"做空訊號全部負期望值或約等於零","s_td13":"做空訊號全部負期望值或約等於零","s_dark":"做空訊號全部負期望值或約等於零","s_bb_upper":"做空訊號全部負期望值或約等於零","s_td9":"做空訊號全部負期望值或約等於零","s_engulf":"做空訊號全部負期望值或約等於零","s_star":"做空訊號全部負期望值或約等於零","c_mstar":"指數 -0.07R、勝率 45%；個股 -0.07R","s_3bc":"做空訊號全部負期望值或約等於零","s_estar":"做空訊號全部負期望值或約等於零","s_macd_dc":"做空訊號全部負期望值或約等於零","s_ma5_20":"做空訊號全部負期望值或約等於零","s_ma20_dn":"做空訊號全部負期望值或約等於零","s_donch20":"做空訊號全部負期望值或約等於零","s_supertrend":"做空訊號全部負期望值或約等於零"}};
+
+// ---- 頁面：#/signals（全部訊號按鈕）與 #/signals/<訊號>（示意圖＋規則＋回測） ----
+var SG = { mk: null, cat: '', st: '', sort: 'guide' };
+try { var _sgs = JSON.parse(localStorage.getItem('hub.sg') || 'null'); if (_sgs) { SG.mk = _sgs.mk || null; SG.sort = _sgs.sort || 'guide'; } } catch (e) { }
+var SG_MK = { TW: '台股', US: '美股', IDX: '指數／台指期' };
+function sgSave() { try { localStorage.setItem('hub.sg', JSON.stringify({ mk: SG.mk, sort: SG.sort })); } catch (e) { } }
+function sgStat(D, k, mk) { var s = D.st[k]; return s && s[mk] && s[mk].n ? s[mk] : null; }
+function sgStatus(k) { var g = SG_GUIDE.ok[k]; return g ? { ok: true, q: g.q, lv: g.lv, mkt: g.mkt, g: g } : { ok: false, why: SG_GUIDE.no[k] || '' }; }
+function sgOrder(D, mk) {
+  var specs = D.specs.slice(), want = mk === 'TW' ? '台股' : mk === 'IDX' ? '指數' : '美股', qv = function (k) { var g = SG_GUIDE.ok[k]; return g ? (g.mkt.indexOf(want) >= 0 ? 0 : 1) : 2; }, R = function (k) { var x = sgStat(D, k, mk); return x ? x.R : -9; };
+  var key = SG.sort;
+  specs.sort(function (a, b) {
+    if (key === 'edge') { var x = sgStat(D, a.k, mk), y = sgStat(D, b.k, mk); return (y ? y.edge : -9) - (x ? x.edge : -9); }
+    if (key === 'R') return R(b.k) - R(a.k);
+    if (key === 'win') { var x2 = sgStat(D, a.k, mk), y2 = sgStat(D, b.k, mk); return (y2 ? y2.win : -9) - (x2 ? x2.win : -9); }
+    return qv(a.k) - qv(b.k) || R(b.k) - R(a.k);
+  });
+  return specs;
+}
+function sgThumb(k) { var R = sgBuild(k); return R ? sgSVG(R, { mini: true, aria: '' }) : ''; }
+function sgPill(st) { return st.ok ? '<span class="pill ok">' + esc(st.lv || '建議使用') + '</span>' : '<span class="pill muted2">已剔除</span>'; }
+function sgCardHTML(D, s, mk) {
+  var x = sgStat(D, s.k, mk), st = sgStatus(s.k);
+  return '<a class="sgcard' + (st.ok ? '' : ' off') + '" href="#/signals/' + esc(s.k) + '" data-sgk="' + esc(s.k) + '"><div class="sgthumb" data-sgth="' + esc(s.k) + '"></div>' +
+    '<div class="sgname">' + (s.side === -1 ? '<span class="pill short">空</span> ' : '') + esc(s.zh) + '</div>' +
+    '<div class="sgmeta">' + esc(s.cat) + ' · ' + (s.fam === 'trend' ? '趨勢型' : '回歸型') + ' ' + sgPill(st) + (st.ok && st.mkt ? ' <span class="muted">' + esc(st.mkt) + '</span>' : '') + '</div>' +
+    '<div class="sgstat">' + (x ? '勝率 <b>' + egW(x.win) + '</b> · 期望值 <b class="' + egCls(x.R, 0.2) + '">' + egR(x.R) + '</b> · 比隨機 <b class="' + egCls(x.edge, 0.1) + '">' + egR(x.edge) + '</b>' : '<span class="muted">' + esc(SG_MK[mk]) + '沒有這個訊號的回測</span>') + '</div></a>';
+}
+function sgFill(root) {
+  var els = Array.prototype.slice.call(root.querySelectorAll('[data-sgth]'));
+  var fill = function (el) { if (el.dataset.done) return; el.dataset.done = '1'; try { el.innerHTML = sgThumb(el.dataset.sgth); } catch (e) { console.warn('sg', e); } };
+  if (!('IntersectionObserver' in window)) { els.forEach(fill); return; }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { fill(e.target); io.unobserve(e.target); } }); }, { rootMargin: '300px' });
+  els.forEach(function (el) { io.observe(el); });
+}
+function renderSignals(arg) {
+  var body = $('#signalsBody'); if (!body) return; body.className = '';
+  var D = state.edge;
+  if (!D) { body.innerHTML = '<div class="pagehead"><div><h2>技術訊號圖解</h2></div></div><div class="errbox">勝率庫資料（data/edge.json）未載入。</div>'; return; }
+  if (!window.EdgeLab) { body.innerHTML = '<div class="errbox">訊號引擎未載入。</div>'; return; }
+  D.specs.forEach(function (s) { SG_META[s.k] = s; });
+  if (!SG.mk) SG.mk = EG.mk || 'IDX';
+  if (arg && D.specMap[arg]) return sgDetail(body, D, arg);
+  var mk = SG.mk, cats = []; D.specs.forEach(function (s) { if (cats.indexOf(s.cat) < 0) cats.push(s.cat); });
+  var list = sgOrder(D, mk).filter(function (s) { var st = sgStatus(s.k); return (!SG.cat || s.cat === SG.cat) && (!SG.st || (SG.st === 'ok' ? st.ok : !st.ok)); });
+  var nOk = D.specs.filter(function (s) { return sgStatus(s.k).ok; }).length;
+  var html = '<div class="pagehead"><div><h2>技術訊號圖解</h2><p>勝率庫回測的 ' + D.specs.length + ' 個技術訊號，每個都畫成一張示意 K 線：在哪一根觸發、哪裡進場、停損放哪、什麼時候出場。觸發點是用回測同一套偵測器在示意價格上實際找出來的，進出場也照回測規則模擬。點任一個訊號看大圖、規則和各市場的回測數字。</p></div>' +
+    '<div class="tools"><div class="seg" id="sgMk">' + ['TW', 'US', 'IDX'].map(function (m) { return '<button data-sgm="' + m + '" aria-pressed="' + (mk === m) + '">' + SG_MK[m] + '</button>'; }).join('') + '</div><a class="btn small" href="#/edge">勝率庫</a><a class="btn small" href="edge-guide.html">勝率庫教學</a></div></div>';
+  html += '<div class="card"><div class="filters"><button class="chipbtn" data-sgc="" aria-pressed="' + (!SG.cat) + '">全部</button>' + cats.map(function (c) { return '<button class="chipbtn" data-sgc="' + esc(c) + '" aria-pressed="' + (SG.cat === c) + '">' + esc(c) + '</button>'; }).join('') + '</div>' +
+    '<div class="filters" style="margin-top:6px"><button class="chipbtn" data-sgs="" aria-pressed="' + (!SG.st) + '">全部 ' + D.specs.length + ' 個</button><button class="chipbtn" data-sgs="ok" aria-pressed="' + (SG.st === 'ok') + '">建議使用 ' + nOk + '</button><button class="chipbtn" data-sgs="no" aria-pressed="' + (SG.st === 'no') + '">已剔除 ' + (D.specs.length - nOk) + '</button><span class="rs-gap" style="width:12px"></span>' +
+    [['guide', '依建議順序'], ['edge', '依比隨機'], ['R', '依期望值'], ['win', '依勝率']].map(function (o) { return '<button class="chipbtn" data-sgo="' + o[0] + '" aria-pressed="' + (SG.sort === o[0]) + '">' + o[1] + '</button>'; }).join('') + '<span class="count">' + list.length + ' 個 · 數字為' + esc(SG_MK[mk]) + '</span></div>' +
+    '<div class="sggrid">' + (list.length ? list.map(function (s) { return sgCardHTML(D, s, mk); }).join('') : '<div class="empty">沒有符合的訊號</div>') + '</div></div>';
+  EG.cat = SG.cat;
+  html += '<div style="margin-top:14px">' + egTableCard(D, mk) + '</div>';
+  html += '<div class="note" style="margin-top:14px">「建議使用」「已剔除」依勝率庫教學的四象限篩選：負期望值、比隨機沒有優勢、或短線明顯輸大盤的訊號剔除，但仍保留數字與圖解讓你知道為什麼不用。示意圖的價格是合成的，不是真實行情。研究參考，不構成投資建議。</div>';
+  body.innerHTML = html;
+  sgFill(body);
+  body.onclick = function (e) {
+    var m = e.target.closest('[data-sgm]'); if (m) { SG.mk = m.dataset.sgm; sgSave(); renderSignals(); return; }
+    var c = e.target.closest('[data-sgc]'); if (c) { SG.cat = c.dataset.sgc; renderSignals(); return; }
+    var c2 = e.target.closest('[data-egc]'); if (c2) { SG.cat = c2.dataset.egc; renderSignals(); var tb = $('#egTbl'); if (tb) tb.scrollIntoView({ block: 'start' }); return; }
+    var so = e.target.closest('[data-egs]'); if (so) { EG.sort = so.dataset.egs; renderSignals(); var tb2 = $('#egTbl'); if (tb2) tb2.scrollIntoView({ block: 'start' }); return; }
+    var s = e.target.closest('[data-sgs]'); if (s) { SG.st = s.dataset.sgs; renderSignals(); return; }
+    var o = e.target.closest('[data-sgo]'); if (o) { SG.sort = o.dataset.sgo; sgSave(); renderSignals(); return; }
+  };
+}
+function sgDetail(body, D, k) {
+  var s = D.specMap[k], st = sgStatus(k), mk = SG.mk, R = sgBuild(k), side = s.side, order = sgOrder(D, mk), ix = order.map(function (x) { return x.k; }).indexOf(k);
+  var prev = order[(ix - 1 + order.length) % order.length], next = order[(ix + 1) % order.length];
+  var exitTxt = s.fam === 'trend'
+    ? (side === 1 ? '初始停損＝進場價 − 2 ATR(14)，收盤判定；之後收盤跌破前 10 日最低點就出場（移動停利）。1R＝2 ATR。' : '初始停損＝進場價 + 2 ATR(14)，收盤判定；之後收盤突破前 10 日最高點就回補。1R＝2 ATR。')
+    : (side === 1 ? '收盤站上 MA5 就出場，或持有滿 10 天出場；另設 3 ATR 災難停損（收盤判定）。' : '收盤跌破 MA5 就回補，或持有滿 10 天回補；另設 3 ATR 災難停損。');
+  var html = '<div class="pagehead"><div><p style="margin:0 0 4px"><a href="#/signals">← 全部訊號</a></p><h2>' + (side === -1 ? '<span class="pill short">空</span> ' : '') + esc(s.zh) + '</h2><p>' + esc(s.cat) + ' · ' + (s.fam === 'trend' ? '趨勢型（移動停利）' : '回歸型（站上 MA5 出場）') + ' · ' + (side === 1 ? '做多' : '做空') + ' ' + sgPill(st) + (st.ok && st.mkt ? ' <span class="pill">適用：' + esc(st.mkt) + '</span>' : '') + '</p></div>' +
+    '<div class="tools"><a class="btn small" href="#/signals/' + esc(prev.k) + '">← ' + esc(prev.zh.replace(/（.*?）/g, '')) + '</a><a class="btn small" href="#/signals/' + esc(next.k) + '">' + esc(next.zh.replace(/（.*?）/g, '')) + ' →</a></div></div>';
+  html += '<div class="card"><h3>示意圖<span class="r">' + (R && R.fired ? '觸發點由回測偵測器判定' : '示意') + '</span></h3><div class="sgbig">' + (R ? sgSVG(R, { aria: s.zh + ' 示意圖' }) : '') + '</div>' +
+    '<div class="sglegend"><span><i style="background:var(--accent)"></i>' + (side === 1 ? '進場（訊號當天收盤）' : '放空（訊號當天收盤）') + '</span><span><i style="background:var(--crit)"></i>' + (s.fam === 'trend' ? '初始停損 2 ATR' : '災難停損 3 ATR') + '</span><span><i style="background:' + (s.fam === 'trend' ? 'var(--warn)' : '#d99a1e') + '"></i>' + (s.fam === 'trend' ? (side === 1 ? '10 日低點（移動停利線）' : '10 日高點（移動停利線）') : 'MA5（出場線）') + '</span><span><i style="background:var(--warn)"></i>' + (side === 1 ? '出場' : '回補') + '</span></div>' +
+    '<div class="note">價格是合成的示意資料，不是真實行情；觸發的那一根是用勝率庫引擎（和回測、掃描同一套規則）在這段價格上實際找出來的，停損與出場也照回測規則逐根模擬。</div></div>';
+  var def = SG_DEF[k] || (st.g && st.g.dl.filter(function (d) { return d[0] === '定義'; }).map(function (d) { return d[1]; })[0]) || '';
+  var rule = '<dl class="sgdl"><dt>觸發條件</dt><dd>' + esc(def) + '</dd><dt>進場</dt><dd>' + (side === 1 ? '訊號當天收盤買進。' : '訊號當天收盤放空。') + '</dd><dt>停損與出場</dt><dd>' + exitTxt + '</dd><dt>成本</dt><dd>來回台股 ' + D.cost.TW + '%、美股 ' + D.cost.US + '%、指數 ' + D.cost.IDX + '%，已扣在所有數字裡。</dd></dl>';
+  var guide = st.ok ? '<dl class="sgdl">' + st.g.dl.filter(function (d) { return d[0] !== '定義'; }).map(function (d) { return '<dt>' + esc(d[0]) + '</dt><dd>' + esc(d[1]) + '</dd>'; }).join('') + '</dl>' : '<div class="rule" style="border-left-color:var(--ink3);margin-top:0"><b>已剔除，不建議使用</b>' + esc(st.why || '回測沒有優勢') + '</div>';
+  var mks = [['TW', '台股'], ['US', '美股'], ['IDX', '指數 4 檔'], ['TWII', '加權']];
+  var mrows = mks.map(function (m) { var x = sgStat(D, k, m[0]); if (!x) return ''; return '<tr' + (m[0] === mk ? ' class="rs-on"' : '') + '><td>' + m[1] + '</td><td class="num">' + x.n.toLocaleString() + '</td><td class="num">' + egW(x.win) + '</td><td class="num ' + egCls(x.R, 0.2) + '">' + egR(x.R) + '</td><td class="num">' + (x.pf != null ? x.pf.toFixed(2) : '—') + '</td><td class="num ' + egCls(x.edge, 0.1) + '">' + egR(x.edge) + '</td><td class="num">' + (x.l10 ? egP(x.l10.ex, 2) + '（' + x.l10.t.toFixed(1) + '）' : '—') + '</td><td class="num">' + (x.hold != null ? Math.round(x.hold) : '—') + '</td></tr>'; }).join('');
+  var cm = sgStat(D, k, mk) ? mk : sgStat(D, k, 'TW') ? 'TW' : sgStat(D, k, 'IDX') ? 'IDX' : null, cx = cm ? sgStat(D, k, cm) : null;
+  var conds = [['', '全部'], ['a200', 'MA200 之上'], ['b200', 'MA200 之下'], ['near52', '近 52 週高（< 10%）'], ['rgUp', '大盤 > MA50'], ['rgDn', '大盤 < MA50']];
+  var crows = cx ? conds.map(function (c) { var o = c[0] ? cx[c[0]] : cx; if (!o || !o.n) return ''; return '<tr><td>' + c[1] + '</td><td class="num">' + o.n.toLocaleString() + '</td><td class="num">' + egW(o.win) + '</td><td class="num ' + egCls(o.R, 0.2) + '">' + egR(o.R) + '</td><td class="num ' + egCls(o.edge, 0.1) + '">' + (o.edge != null ? egR(o.edge) : '—') + '</td></tr>'; }).join('') : '';
+  var tbl = mrows ? '<div class="tablewrap" style="border:0"><table class="perf" style="min-width:560px"><thead><tr><th>市場</th><th class="num">次數</th><th class="num">勝率</th><th class="num">期望值</th><th class="num">PF</th><th class="num">比隨機</th><th class="num">10 日超額（t）</th><th class="num">持有天數</th></tr></thead><tbody>' + mrows + '</tbody></table></div>' : '<div class="muted">沒有回測資料。</div>';
+  var ctb = crows ? '<div class="rs-sub" style="margin-top:12px">' + esc(cm === 'IDX' ? '指數' : SG_MK[cm]) + '：依條件分組</div><div class="tablewrap" style="border:0"><table class="perf" style="min-width:420px"><thead><tr><th>條件</th><th class="num">次數</th><th class="num">勝率</th><th class="num">期望值</th><th class="num">比隨機</th></tr></thead><tbody>' + crows + '</tbody></table></div>' : '';
+  var yr = '';
+  if (cx && cx.year && typeof rsCols === 'function') { var Y = Object.keys(cx.year).sort(), useE = cx.year[Y[0]][2] != null; yr = '<div class="rs-sub" style="margin-top:12px">' + esc(cm === 'IDX' ? '指數' : SG_MK[cm]) + '：逐年' + (useE ? '比隨機' : '期望值') + '（R）</div>' + rsCols(Y.map(function (y) { var v = cx.year[y]; return { l: y, lab: true, v: useE ? v[2] : v[1], tip: y + ' 年\n' + v[0] + ' 筆\n期望值 ' + egR(v[1]) + (v[2] != null ? '\n比隨機 ' + egR(v[2]) : '') }; }), { aria: s.zh + ' 逐年' }); }
+  html += '<div class="two-eq" style="margin-top:14px"><div class="card"><h3>回測規則<span class="r">圖上畫的就是這套</span></h3>' + rule + '<div class="rs-sub" style="margin-top:12px">' + (st.ok ? '實戰重點（勝率庫教學）' : '為什麼剔除') + '</div>' + guide + '</div>' +
+    '<div class="card"><h3>回測數字<span class="r">' + esc(D.universe.from) + '～' + esc(D.universe.to) + '（指數 ' + esc(D.universe.idxFrom) + ' 起）</span></h3>' + tbl + ctb + yr + '<div class="note">期望值以 R 計；「比隨機」＝同一天同市場隨機進場、套同樣出場規則的期望值差，扣掉大盤順風；10 日超額＝訊號後 10 日報酬減同日全市場平均，|t| ≥ 3 才算穩定。</div></div></div>';
+  body.innerHTML = html;
+  var bg = $('.sgbig', body); if (bg && R && bg.scrollWidth > bg.clientWidth) bg.scrollLeft = Math.max(0, (R.t - R.S + 0.5) / R.V * bg.scrollWidth - bg.clientWidth * 0.6);
+  if (typeof rsTipInit === 'function') try { rsTipInit(body); } catch (e) { }
+  body.onclick = null;
+}
+
 
 /* ===== 啟動 ===== */
 loadWatchLocal();
